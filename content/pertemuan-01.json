@@ -1,0 +1,96 @@
+{
+  "courseId": "se4ds",
+  "sessionId": "pertemuan-01",
+  "eyebrow": "Session 01 · M-058",
+  "title": "Introduction to Data-Driven Software Development",
+  "lead": "Data-driven software development memanfaatkan analisis data, metrik operasional, dan feedback nyata untuk memandu setiap keputusan dalam rekayasa perangkat lunak.",
+  "sections": [
+    {
+      "id": "definisi",
+      "label": "Konsep Dasar",
+      "title": "Mengapa Software Modern Membutuhkan Data",
+      "body": [
+        "Data-driven software development adalah praktik memanfaatkan analisis data dan metrik terukur untuk memandu perancangan, pengembangan, dan evolusi perangkat lunak.",
+        "Pendekatan ini menekankan pentingnya penggunaan data dunia nyata untuk menginformasikan keputusan arsitektural, mengoptimalkan kinerja sistem, dan meningkatkan pengalaman pengguna secara berkelanjutan."
+      ],
+      "callout": "Keputusan rekayasa yang dipandu oleh metrik dan data empiris selalu mengungguli asumsi spekulatif."
+    },
+    {
+      "id": "paradigma",
+      "label": "Evolusi Arsitektur",
+      "title": "Dari RDBMS Klasik ke Pendekatan Multi-Model",
+      "body": [
+        "Selama empat dekade, perangkat lunak terbiasa menempatkan seluruh data ke dalam RDBMS terpusat. Namun saat ini, volume data yang eksponensial dan keberagaman tipe data (dokumen JSON, time-series, grafik) menuntut fleksibilitas baru.",
+        "Sistem modern memperlakukan data sebagai entitas utama: pertukaran dokumen antarsistem, event streaming, dan database multi-model mempercepat siklus antara spesifikasi fitur hingga deployment ke production."
+      ],
+      "callout": "Format semi-terstruktur seperti JSON telah menjadi bahasa pertukaran informasi utama antara layanan backend dan frontend."
+    },
+    {
+      "id": "ekosistem",
+      "label": "Ekosistem",
+      "title": "Menyatukan Software Engineering, Data Science, dan MLOps",
+      "body": [
+        "Software engineering menyediakan fondasi berupa SDLC, Agile, dan DevOps agar kode dapat diuji dan dirilis secara otomatis.",
+        "Data Science dan Machine Learning menyuntikkan kapabilitas analitik dan prediksi. MLOps kemudian menyatukan keduanya agar model dapat beroperasi di production dengan monitoring latensi, deteksi data drift, dan integrasi berkelanjutan."
+      ],
+      "callout": "Model AI tercanggih sekalipun tidak bernilai jika sistem engineering di sekelilingnya rapuh atau tidak mampu menangani data produksi."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Apa esensi utama dari data-driven software development?",
+      "options": [
+        "Menghindari penggunaan database",
+        "Memanfaatkan metrik dan analisis data nyata untuk memandu keputusan pengembangan",
+        "Menulis kode tanpa pengujian",
+        "Hanya fokus pada pembuatan tampilan antarmuka"
+      ],
+      "answer": 1,
+      "explanation": "Data-driven development menggunakan data dan metrik empiris untuk mengoptimalkan performa, arsitektur, dan pengalaman pengguna."
+    },
+    {
+      "question": "Mengapa sistem modern banyak beralih ke format multi-model dan dokumen seperti JSON?",
+      "options": [
+        "Karena RDBMS sudah tidak bisa menyimpan data teks",
+        "Untuk mengakomodasi variasi tipe data, volume besar, dan integrasi layanan yang lebih fleksibel",
+        "Karena JSON memerlukan memori lebih sedikit dibanding biner",
+        "Agar tidak perlu membuat backup data"
+      ],
+      "answer": 1,
+      "explanation": "Variasi data dan kebutuhan integrasi cepat menuntut fleksibilitas skema yang disediakan database multi-model dan format dokumen."
+    },
+    {
+      "question": "Apa peran MLOps dalam ekosistem perangkat lunak modern?",
+      "options": [
+        "Menghapus peran software engineer",
+        "Menjembatani model Machine Learning ke lingkungan operasional production secara andal",
+        "Mengganti seluruh sistem cloud dengan server lokal",
+        "Hanya bertugas menulis dokumentasi proyek"
+      ],
+      "answer": 1,
+      "explanation": "MLOps mengotomatisasi deployment, monitoring, dan pemeliharaan model Machine Learning di lingkungan produksi."
+    },
+    {
+      "question": "Apa risiko jika keputusan rekayasa software hanya didasarkan pada intuisi tanpa data metrik?",
+      "options": [
+        "Biaya server otomatis menjadi gratis",
+        "Fitur berisiko tidak menyelesaikan masalah nyata pengguna dan degradasi performa terlambat terdeteksi",
+        "Waktu kompilasi kode selalu lebih cepat",
+        "Model otomatis mencapai akurasi 100%"
+      ],
+      "answer": 1,
+      "explanation": "Tanpa metrik observabilitas dan data pengguna, tim tidak dapat memvalidasi apakah solusi yang dibangun tepat sasaran dan berkinerja baik."
+    },
+    {
+      "question": "Prinsip apa dari DevOps yang diadopsi ke dalam MLOps?",
+      "options": [
+        "Manual deployment mingguan",
+        "Continuous Integration, Continuous Delivery (CI/CD), dan otomasi monitoring",
+        "Menghilangkan tahap testing agar cepat rilis",
+        "Menyimpan kode tanpa version control"
+      ],
+      "answer": 1,
+      "explanation": "CI/CD dan otomasi monitoring adalah pilar utama DevOps yang diperluas ke MLOps untuk menangani data dan model pipeline."
+    }
+  ]
+}

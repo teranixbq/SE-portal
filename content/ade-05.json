@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-05",
+  "eyebrow": "Modul 05 · M-059",
+  "title": "Masalah Umum pada Data (Common Data Issues)",
+  "lead": "Mengidentifikasi anomaly, outlier, missing value, noise, duplikat, inkonsistensi. Memilih teknik penanganan yang tepat per masalah.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Common Data Issues",
+      "title": "1. Taksonomi Masalah",
+      "body": [
+        "Missing (MCAR/MAR/MNAR), outlier vs anomaly (outlier = titik ekstrem; anomaly = pola menyimpang kontekstual), noise (kesalahan acak pengukuran), duplikat (exact & fuzzy), inkonsistensi format/satuan, data drift (distribusi berubah seiring waktu)."
+      ],
+      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3 Data Preprocessing"
+    },
+    {
+      "id": "sec-2",
+      "label": "Common Data Issues",
+      "title": "2. Deteksi",
+      "body": [
+        "Statistik: z-score, IQR fence (Q1−1.5·IQR), uji Grubbs. ML: Isolation Forest, LOF, autoencoder reconstruction error. Missing: profilkan pola (matrix plot). Duplikat: hashing + record linkage (Jaro-Winkler)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Common Data Issues",
+      "title": "3. Penanganan + Smoothing",
+      "body": [
+        "Missing: hapus (jika <5% & MCAR), imputasi (mean/median/mode, KNN, model-based), flag indikator missing. Outlier: winsorize, transform log, pisahkan untuk investigasi — jangan asal hapus. Noise: binning, moving average, Savitzky-Golay, wavelet. Selalu catat % data yang diubah."
+      ],
+      "callout": "Istilah Kunci: MCAR/MAR/MNAR, IQR fence, Isolation Forest, Winsorize, Smoothing"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Deteksi outlier IQR per produk (PostgreSQL)\nWITH q AS (\n SELECT product_id, price,\n  PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY price) OVER (PARTITION BY category) AS q1,\n  PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY price) OVER (PARTITION BY category) AS q3\n FROM products)\nSELECT * FROM q WHERE price &lt; q1 - 1.5*(q3-q1) OR price &gt; q3 + 1.5*(q3-q1);</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Data hilang karena sensor rusak acak termasuk mekanisme…",
+      "options": [
+        "MCAR",
+        "MAR",
+        "MNAR",
+        "Bukan missing"
+      ],
+      "answer": 0,
+      "explanation": "MCAR: hilang sepenuhnya acak, tidak terkait variabel lain."
+    },
+    {
+      "question": "Aturan pagar IQR untuk outlier…",
+      "options": [
+        "mean ± sd",
+        "Q1−1.5·IQR dan Q3+1.5·IQR",
+        "median ± 2",
+        "min–max"
+      ],
+      "answer": 1,
+      "explanation": "Tukey fences — robust terhadap skew dibanding z-score."
+    },
+    {
+      "question": "Algoritma ML untuk deteksi anomali tak terawasi…",
+      "options": [
+        "Isolation Forest",
+        "Linear regression",
+        "K-means saja",
+        "Naive Bayes"
+      ],
+      "answer": 0,
+      "explanation": "Isolation Forest mengisolasi anomali dengan sedikit partisi."
+    },
+    {
+      "question": "Teknik yang TIDAK tepat untuk outlier…",
+      "options": [
+        "Investigasi dulu sebelum hapus",
+        "Winsorize",
+        "Hapus massal tanpa catat",
+        "Transform log"
+      ],
+      "answer": 2,
+      "explanation": "Outlier bisa jadi sinyal (fraud); hapus massal menghilangkan informasi."
+    },
+    {
+      "question": "Contoh smoothing deret waktu…",
+      "options": [
+        "Moving average",
+        "One-hot encoding",
+        "Hashing",
+        "Indexing"
+      ],
+      "answer": 0,
+      "explanation": "Moving average meredam noise acak jangka pendek."
+    }
+  ]
+}

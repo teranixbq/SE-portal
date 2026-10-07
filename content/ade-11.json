@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-11",
+  "eyebrow": "Modul 11 · M-059",
+  "title": "Data Lake, Warehouse & Lakehouse (Data Lake, Warehouse & Lakehouse)",
+  "lead": "Menjelaskan data mart, warehouse, lake, lakehouse. Menganalisis kelebihan/kekurangan + contoh penerapan.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Data Lake, Warehouse & Lakehouse",
+      "title": "1. Definisi",
+      "body": [
+        "Warehouse: terstruktur, skema-on-write, optimal untuk BI/SQL (Snowflake, BigQuery). Lake: mentah multi-format, skema-on-read, murah (S3 + Parquet/Iceberg). Lakehouse: gabungan — lake murah + transaksi/ACID + SQL performan (Delta Lake, Iceberg, Hudi). Mart: subset warehouse per departemen."
+      ],
+      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1; Dehghani (2022); Reis & Housley (2022) Ch.5"
+    },
+    {
+      "id": "sec-2",
+      "label": "Data Lake, Warehouse & Lakehouse",
+      "title": "2. Perbandingan",
+      "body": [
+        "Warehouse: kualitas & governance kuat, biaya storage/compute tinggi. Lake: fleksibel & murah, risiko jadi 'data swamp' tanpa katalog. Lakehouse: modern default untuk analitik + ML. Data Mesh (Dehghani): desentralisasi kepemilikan per domain + federated governance."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Data Lake, Warehouse & Lakehouse",
+      "title": "3. Contoh",
+      "body": [
+        "Universitas: lake (log LMS mentah) → warehouse (dimensi mhs, fakta nilai) → mart (mart_akademik, mart_keuangan) → dashboard + early-warning DO. Format terbuka: Parquet + Iceberg agar antar-engine interoperable."
+      ],
+      "callout": "Istilah Kunci: Schema-on-write vs on-read, Lakehouse, Delta/Iceberg/Hudi, Data mart, Data mesh"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Iceberg: time travel &amp; evolusi skema aman\n-- SELECT * FROM gold.mart_akademik FOR SYSTEM_TIME AS OF '2025-08-01';\nALTER TABLE lake.silver_logs ADD COLUMNS (prodi STRING);</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Schema-on-read adalah ciri…",
+      "options": [
+        "Warehouse",
+        "Data lake",
+        "OLTP",
+        "Spreadsheet"
+      ],
+      "answer": 1,
+      "explanation": "Lake simpan mentah, skema saat dibaca."
+    },
+    {
+      "question": "Lakehouse menggabungkan…",
+      "options": [
+        "Lake murah + transaksi/ACID & SQL performan ala warehouse",
+        "OLTP + email",
+        "CSV + PDF",
+        "FTP + blog"
+      ],
+      "answer": 0,
+      "explanation": "Delta/Iceberg/Hudi di atas object store."
+    },
+    {
+      "question": "Data mart adalah…",
+      "options": [
+        "Seluruh warehouse",
+        "Subset warehouse per domain/departemen",
+        "Data mentah",
+        "Backup"
+      ],
+      "answer": 1,
+      "explanation": "Mis. mart_akademik, mart_keuangan."
+    },
+    {
+      "question": "Risiko 'data swamp'…",
+      "options": [
+        "Lake tanpa katalog/governance",
+        "Warehouse mahal",
+        "OLTP lambat",
+        "Dashboard bagus"
+      ],
+      "answer": 0,
+      "explanation": "Tanpa metadata & quality gates, lake tak usable."
+    },
+    {
+      "question": "Format tabel terbuka untuk lakehouse…",
+      "options": [
+        "Parquet + Iceberg/Delta",
+        "BMP",
+        "MP3",
+        "DOCX"
+      ],
+      "answer": 0,
+      "explanation": "Interoperabel antar-engine (Spark, Trino, Flink)."
+    }
+  ]
+}

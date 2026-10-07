@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Mata Kuliah · Minilify</title>
+</head>
+<body>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const c = p.get('course') || 'se4ds';
+    location.replace(`session.html?course=${c}`);
+  </script>
+</body>
+</html>

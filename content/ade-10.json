@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-10",
+  "eyebrow": "Modul 10 · M-059",
+  "title": "Basis Data Non-Tradisional 1: NoSQL (Non-traditional Data Engineering 1: NoSQL)",
+  "lead": "Menjelaskan 4 tipe NoSQL: document, key-value, column-family, graph. Menganalisis perbedaan vs relasional + tradeoff CAP/PACELC. Memilih jenis yang tepat per kebutuhan.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Non-traditional Data Engineering 1: NoSQL",
+      "title": "1. Empat Tipe",
+      "body": [
+        "Document (MongoDB: JSON fleksibel, katalog produk). Key-Value (Redis: session/cache, TTL). Column-family (Cassandra/HBase: tulis masif time-series, partisi). Graph (Neo4j: relasi kompleks — fraud, rekomendasi, knowledge graph)."
+      ],
+      "callout": "Bahan Bacaan: Sadalage & Fowler (2012); Kleppmann (2017) Ch.2"
+    },
+    {
+      "id": "sec-2",
+      "label": "Non-traditional Data Engineering 1: NoSQL",
+      "title": "2. vs Relasional + Teorema CAP",
+      "body": [
+        "Relasional: skema kaku + join kuat + ACID. NoSQL: skema fleksibel + skala horizontal + BASE (Basically Available, Soft state, Eventually consistent). CAP: saat partisi jaringan, pilih Consistency atau Availability. PACELC melengkapi untuk kondisi normal (latency vs consistency)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Non-traditional Data Engineering 1: NoSQL",
+      "title": "3. Panduan Pilih",
+      "body": [
+        "Butuh join ad-hoc + integritas → RDBMS. Dokumen heterogen → Document. Lookup super-cepat → Key-Value. Time-series tulis masif → Column. Jelajah relasi multi-hop → Graph. Polyglot persistence (campuran) itu normal."
+      ],
+      "callout": "Istilah Kunci: Document/Key-Value/Column/Graph, CAP & PACELC, BASE vs ACID, Polyglot persistence"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>// MongoDB: dokumen fleksibel (satu koleksi, skema bervariasi)\ndb.products.insertOne({ sku:\"A-1\", name:\"Kopi\", tags:[\"arabika\"],\n  specs:{ weight_g:200 }, price: 85000 })\n// Redis: cache sesi dengan TTL\n// SET session:42 \"....\" EX 3600</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "MongoDB termasuk tipe…",
+      "options": [
+        "Key-value",
+        "Document",
+        "Column-family",
+        "Graph"
+      ],
+      "answer": 1,
+      "explanation": "Dokumen JSON/BSON fleksibel per record."
+    },
+    {
+      "question": "Redis paling cocok untuk…",
+      "options": [
+        "Graph traversal",
+        "Cache/session lookup super-cepat",
+        "Full-text join kompleks",
+        "Data warehouse"
+      ],
+      "answer": 1,
+      "explanation": "In-memory key-value + TTL."
+    },
+    {
+      "question": "Cassandra adalah contoh…",
+      "options": [
+        "Document",
+        "Column-family",
+        "Graph",
+        "Relasional"
+      ],
+      "answer": 1,
+      "explanation": "Tulis masif terdistribusi, partisi row-key."
+    },
+    {
+      "question": "Teorema CAP menyatakan saat partisi…",
+      "options": [
+        "Pilih C atau A",
+        "Bisa semua sekaligus",
+        "Tidak perlu partisi",
+        "Hanya latency"
+      ],
+      "answer": 0,
+      "explanation": "Consistency vs Availability saat network partition."
+    },
+    {
+      "question": "Kasus paling cocok untuk graph DB…",
+      "options": [
+        "Katalog produk sederhana",
+        "Deteksi fraud berbasis relasi multi-hop",
+        "Log time-series",
+        "Session cache"
+      ],
+      "answer": 1,
+      "explanation": "Traversal relasi dalam di Neo4j jauh lebih cepat dari join berlapis."
+    }
+  ]
+}

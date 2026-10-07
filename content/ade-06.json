@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-06",
+  "eyebrow": "Modul 06 · M-059",
+  "title": "Transformasi Data & Rekayasa Fitur (Data Transformation & Feature Extraction)",
+  "lead": "Menjelaskan rescaling, reduksi, diskretisasi, sampling, agregasi, normalisasi. Menganalisis PCA, binning, clustering untuk reduksi. Menerapkan teknik pada studi kasus.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Data Transformation & Feature Extraction",
+      "title": "1. Rescaling & Normalisasi",
+      "body": [
+        "Min-max scaling ke [0,1]; z-score standardization (mean 0, sd 1 — wajib untuk SVM, k-NN, PCA, neural net); robust scaling (median/IQR — tahan outlier); log/power transform untuk skew; one-hot vs ordinal/label encoding untuk kategorikal."
+      ],
+      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3; Leskovec et al. (2020) Ch.11-12"
+    },
+    {
+      "id": "sec-2",
+      "label": "Data Transformation & Feature Extraction",
+      "title": "2. Reduksi: Dimensionality, Numerosity, Compression",
+      "body": [
+        "Dimensionality: PCA (pilih komponen hingga 95% variance), feature selection (filter/wrapper/embedded). Numerosity: sampling (stratified!), agregasi (roll-up harian), histogram/sketch. Compression: Parquet + Snappy/ZSTD, dictionary encoding. Aturan: fit transform HANYA di data train, lalu apply ke test (hindari leakage)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Data Transformation & Feature Extraction",
+      "title": "3. Diskretisasi, Binning, Clustering, Sampling",
+      "body": [
+        "Binning: equal-width vs equal-frequency vs domain-driven. Discretization untuk aturan asosiasi/Naive Bayes. Clustering (k-means) sebagai fitur segmentasi. Sampling: random, stratified, reservoir untuk stream. Agregasi window untuk deret waktu (7-day avg)."
+      ],
+      "callout": "Istilah Kunci: Min-max vs Z-score, PCA, Data leakage, Stratified sampling, Parquet"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code># Pola anti-leakage (scikit-learn)\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.decomposition import PCA\nsc = StandardScaler().fit(X_train)   # fit: train SAJA\nXtr = PCA(0.95).fit_transform(sc.transform(X_train))\nXte = sc.transform(X_test)           # test: transform SAJA</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Standardisasi z-score menghasilkan…",
+      "options": [
+        "Range [0,1]",
+        "Mean 0, sd 1",
+        "Median 0",
+        "Distribusi uniform"
+      ],
+      "answer": 1,
+      "explanation": "z = (x−mean)/sd; wajib untuk algoritma berbasis jarak."
+    },
+    {
+      "question": "Kebocoran data (leakage) terjadi jika…",
+      "options": [
+        "Fit scaler memakai data test",
+        "Memakai train-test split",
+        "Normalisasi train saja",
+        "Memakai cross-validation"
+      ],
+      "answer": 0,
+      "explanation": "Statistik test bocor ke train → evaluasi terlalu optimistis."
+    },
+    {
+      "question": "PCA memilih komponen berdasarkan…",
+      "options": [
+        "Nilai maksimum",
+        "Proporsi varians dijelaskan",
+        "Jumlah missing",
+        "Alfabet"
+      ],
+      "answer": 1,
+      "explanation": "Umumnya pertahankan ~95% cumulative variance."
+    },
+    {
+      "question": "Equal-frequency binning berarti…",
+      "options": [
+        "Lebar interval sama",
+        "Jumlah observasi tiap bin sama",
+        "Bin acak",
+        "Satu bin saja"
+      ],
+      "answer": 1,
+      "explanation": "Kebalikan dari equal-width; robust terhadap skew."
+    },
+    {
+      "question": "Format kolom terkompresi standar lakehouse…",
+      "options": [
+        "CSV",
+        "Parquet",
+        "TXT",
+        "BMP"
+      ],
+      "answer": 1,
+      "explanation": "Parquet: columnar + encoding + Snappy/ZSTD."
+    }
+  ]
+}

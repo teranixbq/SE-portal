@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-09",
+  "eyebrow": "Modul 09 · M-059",
+  "title": "ETL, ELT & Data Pipeline (ETL, ELT, and Data Pipelines)",
+  "lead": "Menganalisis kebutuhan integrasi data. Merancang alur ETL/ELT dan pipeline yang efisien. Mengevaluasi rancangan dari sisi kualitas data & kinerja.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "ETL, ELT, and Data Pipelines",
+      "title": "1. ETL vs ELT",
+      "body": [
+        "ETL: Transform sebelum Load (cocok untuk warehouse klasik + aturan ketat). ELT: Load mentah dulu ke lake/warehouse lalu Transform di dalam (cocok untuk big data + fleksibilitas, mis. dbt di BigQuery/Snowflake). Pola medallion: Bronze (mentah) → Silver (bersih) → Gold (agregat bisnis)."
+      ],
+      "callout": "Bahan Bacaan: Reis & Housley (2022) Ch.8-10; Doan et al. (2012) Ch.5-6"
+    },
+    {
+      "id": "sec-2",
+      "label": "ETL, ELT, and Data Pipelines",
+      "title": "2. Anatomi Pipeline",
+      "body": [
+        "Ingest → Validate (Great Expectations: not-null, unique, range) → Transform (idempotent!) → Load (upsert/merge, SCD) → Orchestrate (Airflow/Prefect: retry, SLA, alerting) → Observe (data docs, freshness, volume, lineage dengan OpenLineage)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "ETL, ELT, and Data Pipelines",
+      "title": "3. Kualitas & Kinerja",
+      "body": [
+        "Idempotensi: rerun aman. Incremental vs full load (watermark). Partisi berdasarkan tanggal. Evaluasi: data quality gates lolos? SLA terpenuhi? biaya compute? RPO/RTO backup?"
+      ],
+      "callout": "Istilah Kunci: ETL vs ELT, Medallion, Idempotent, Orchestration, Data observability"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Contoh ELT: transform di dalam warehouse (dbt-style)\nCREATE OR REPLACE VIEW gold.daily_revenue AS\nSELECT d.year, d.month, SUM(f.amount) AS revenue\nFROM fact_sales f JOIN dim_date d USING (date_key)\nGROUP BY 1, 2;</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Perbedaan ETL vs ELT…",
+      "options": [
+        "Sama saja",
+        "ETL transform sebelum load; ELT load mentah dulu lalu transform di platform target",
+        "ELT lebih lama selalu",
+        "ETL tanpa extract"
+      ],
+      "answer": 1,
+      "explanation": "ELT memanfaatkan compute warehouse/lake modern (dbt)."
+    },
+    {
+      "question": "Lapisan 'Silver' pada medallion…",
+      "options": [
+        "Data mentah",
+        "Data bersih/tervalidasi",
+        "Agregat bisnis final",
+        "Backup tape"
+      ],
+      "answer": 1,
+      "explanation": "Bronze mentah → Silver bersih → Gold bisnis."
+    },
+    {
+      "question": "Sifat pipeline yang aman di-rerun disebut…",
+      "options": [
+        "Idempotent",
+        "Volatile",
+        "Random",
+        "Blocking"
+      ],
+      "answer": 0,
+      "explanation": "Rerun menghasilkan state akhir sama."
+    },
+    {
+      "question": "Contoh data quality gate…",
+      "options": [
+        "Cek not-null, unique, range sebelum load",
+        "Hapus log",
+        "Matikan alert",
+        "Full load selalu"
+      ],
+      "answer": 0,
+      "explanation": "Validasi dengan Great Expectations / dbt tests."
+    },
+    {
+      "question": "Fungsi orchestrator (Airflow)…",
+      "options": [
+        "Menyimpan data",
+        "Menjadwalkan, retry, SLA & alerting DAG",
+        "Melatih model",
+        "Membuat ERD"
+      ],
+      "answer": 1,
+      "explanation": "Orkestrasi依存 + observability pipeline."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "se4ds",
+    "code": "M-058",
+    "name": "Data Science For Software Engineering",
+    "shortName": "Data Science for SE",
+    "description": "Menyatukan prinsip rekayasa perangkat lunak dengan metode data science dan machine learning.",
+    "status": "active",
+    "sessions": 15,
+    "accent": "fern"
+  },
+  {
+    "id": "ade",
+    "code": "M-059",
+    "name": "Advance Data Engineering",
+    "shortName": "Advanced Data Engineering",
+    "description": "Siklus data, arsitektur modern, ETL/ELT pipeline, storage NoSQL, data lakehouse, dan distributed processing.",
+    "status": "active",
+    "sessions": 13,
+    "accent": "moss"
+  },
+  {
+    "id": "sqse",
+    "code": "M-060",
+    "name": "Software Quality Quality Effort",
+    "shortName": "Software Quality & Effort",
+    "description": "Materi akan segera ditambahkan.",
+    "status": "soon",
+    "sessions": 0,
+    "accent": "sage"
+  },
+  {
+    "id": "rmse",
+    "code": "M-061",
+    "name": "Research Methodology For Data Science & Software Engineering",
+    "shortName": "Research Methodology",
+    "description": "Materi akan segera ditambahkan.",
+    "status": "soon",
+    "sessions": 0,
+    "accent": "olive"
+  }
+]

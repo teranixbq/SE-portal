@@ -1,0 +1,17 @@
+[
+  {"id":"pertemuan-01","number":1,"title":"Introduction to Data-Driven Software Development","status":"available","summary":"Mengapa software modern perlu memanfaatkan data, automation, dan feedback."},
+  {"id":"pertemuan-02","number":2,"title":"Fundamentals of Software Development","status":"available","summary":"SDLC, OOP, validasi model, dan jembatan dari model machine learning ke aplikasi."},
+  {"id":"pertemuan-03","number":3,"title":"Agile Principles","status":"available","summary":"Manifesto Agile, Scrum, Kanban, XP, backlog, dan sprint planning."},
+  {"id":"pertemuan-04","number":4,"title":"Agile Development Techniques","status":"available","summary":"User story, task board, TDD, continuous integration, dan delivery."},
+  {"id":"pertemuan-05","number":5,"title":"DevOps Principles","status":"available","summary":"Budaya kolaborasi, automation, monitoring, CI, dan CD."},
+  {"id":"pertemuan-06","number":6,"title":"DevOps Tools and Practices","status":"available","summary":"Version control, Jenkins, Docker, Kubernetes, logging, dan keamanan."},
+  {"id":"pertemuan-07","number":7,"title":"Introduction to Machine Learning","status":"available","summary":"Jenis ML, preprocessing, training, evaluasi, dan bias-variance."},
+  {"id":"pertemuan-08","number":8,"title":"Midterm Review","status":"planned","summary":"Review konsep dan latihan terpadu."},
+  {"id":"pertemuan-09","number":9,"title":"Integrating ML in Software Development","status":"available","summary":"ML di aplikasi, data pipeline, feature engineering, dan production."},
+  {"id":"pertemuan-10","number":10,"title":"Introduction to Data Science","status":"available","summary":"Data sebagai aset, proses analisis, kualitas data, dan keputusan berbasis data."},
+  {"id":"pertemuan-11","number":11,"title":"Data Science Tools and Techniques","status":"available","summary":"Python, R, Jupyter, analisis data, dan visualisasi."},
+  {"id":"pertemuan-12","number":12,"title":"MLOps","status":"available","summary":"Mengoperasikan model ML: deploy, monitor, evaluasi, dan optimasi."},
+  {"id":"pertemuan-13","number":13,"title":"Data Security and Regulation in MLOps","status":"available","summary":"Pipeline aman, privasi, regulasi, dan pemeliharaan model."},
+  {"id":"pertemuan-14","number":14,"title":"Integrative Project","status":"available","summary":"Menyatukan pengetahuan melalui proyek lintas disiplin."},
+  {"id":"pertemuan-15","number":15,"title":"Project Evaluation and Reflection","status":"available","summary":"Evaluasi proyek, refleksi belajar, dan implikasi industri."}
+]

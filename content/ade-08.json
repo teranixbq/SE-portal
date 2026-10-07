@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-08",
+  "eyebrow": "Modul 08 · M-059",
+  "title": "Normalisasi & Pemodelan Dimensional (Normalization & Dimensional Modelling)",
+  "lead": "Menerapkan normalisasi hingga bentuk normal yang sesuai (1NF–BCNF). Merancang star/snowflake schema: tabel fakta vs dimensi. Memvalidasi rancangan dari sisi integritas, efisiensi, analitik.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Normalization & Dimensional Modelling",
+      "title": "1. Normalisasi (OLTP)",
+      "body": [
+        "1NF: atomik, tanpa repeating group. 2NF: non-key bergantung penuh pada seluruh PK (hilangkan partial dependency). 3NF: tanpa transitive dependency. BCNF: setiap determinan adalah superkey. Denormalisasi terkontrol boleh untuk baca-berat — dengan alasan tertulis."
+      ],
+      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1-4; Elmasri & Navathe (2016) Ch.14-15"
+    },
+    {
+      "id": "sec-2",
+      "label": "Normalization & Dimensional Modelling",
+      "title": "2. Model Dimensional (OLAP)",
+      "body": [
+        "Fakta = ukuran numerik + FK (mis. sales_amount, qty) — grain harus eksplisit (satu baris = satu order line). Dimensi = konteks (waktu, produk, pelanggan, SCD tipe 1/2 untuk histori). Star (dimensi flat, cepat) vs Snowflake (dimensi ternormalisasi, hemat)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Normalization & Dimensional Modelling",
+      "title": "3. Validasi",
+      "body": [
+        "Checklist: grain konsisten? SCD tepat? surrogate key untuk dimensi? conformed dimensions lintas datamart? Uji dengan 3–5 query bisnis nyata + EXPLAIN."
+      ],
+      "callout": "Istilah Kunci: 1NF/2NF/3NF/BCNF, Grain, Fact vs Dimension, Star vs Snowflake, SCD"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Star schema minimal\nCREATE TABLE dim_date(date_key INT PRIMARY KEY, d DATE, month INT, year INT);\nCREATE TABLE dim_product(product_key SERIAL PRIMARY KEY, sku TEXT, category TEXT);\nCREATE TABLE fact_sales(order_line_id BIGINT PRIMARY KEY,\n date_key INT REFERENCES dim_date, product_key INT REFERENCES dim_product,\n qty INT, amount NUMERIC(12,2));</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Tabel melanggar 1NF jika…",
+      "options": [
+        "Ada kolom non-atomik / repeating group",
+        "Ada PK",
+        "Sudah ada FK",
+        "Ada index"
+      ],
+      "answer": 0,
+      "explanation": "1NF: tiap sel atomik, tiap baris unik."
+    },
+    {
+      "question": "2NF menghilangkan…",
+      "options": [
+        "Transitive dependency",
+        "Partial dependency",
+        "Multivalued",
+        "Join"
+      ],
+      "answer": 1,
+      "explanation": "Non-key harus bergantung penuh pada seluruh PK komposit."
+    },
+    {
+      "question": "Dalam star schema, tabel fakta berisi…",
+      "options": [
+        "Atribut deskriptif",
+        "Ukuran numerik + FK ke dimensi",
+        "Hanya teks",
+        "Metadata"
+      ],
+      "answer": 1,
+      "explanation": "Fakta = measures; dimensi = konteks."
+    },
+    {
+      "question": "Grain yang baik harus…",
+      "options": [
+        "Ambigu",
+        "Dideklarasikan eksplisit per baris",
+        "Berubah-ubah",
+        "Disembunyikan"
+      ],
+      "answer": 1,
+      "explanation": "Mis. 'satu baris = satu order line'."
+    },
+    {
+      "question": "SCD Tipe 2 digunakan untuk…",
+      "options": [
+        "Timpa histori",
+        "Simpan histori perubahan dimensi sebagai baris baru",
+        "Hapus dimensi",
+        "Arsip file"
+      ],
+      "answer": 1,
+      "explanation": "Tipe 1 = overwrite; Tipe 2 = histori penuh."
+    }
+  ]
+}

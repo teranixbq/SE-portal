@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-12",
+  "eyebrow": "Modul 12 · M-059",
+  "title": "Pemrosesan Paralel & Terdistribusi (+ Tugas-2) (Parallel & Distributed Processing)",
+  "lead": "Menjelaskan batch vs stream, in-memory, parallel computing. Menganalisis tradeoff tiap teknik + skenario penggunaan. Tugas-2: Analisis & Perancangan Basis Data.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Parallel & Distributed Processing",
+      "title": "1. Batch vs Stream",
+      "body": [
+        "Batch (Spark, MapReduce): throughput tinggi, latency menit–jam — cocok untuk ETL harian, training ML. Stream (Kafka + Flink/Spark Streaming): latency detik — cocok untuk fraud detection, monitoring. Lambda (batch+speed layer) vs Kappa (semua sebagai stream). Exactly-once butuh idempotent sink."
+      ],
+      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.8-11; Chambers & Zaharia (2018); Buyya et al. (2016)"
+    },
+    {
+      "id": "sec-2",
+      "label": "Parallel & Distributed Processing",
+      "title": "2. In-Memory & Paralel",
+      "body": [
+        "In-memory (Spark RDD/DataFrame, Redis) menghindari I/O disk berulang — 10–100x untuk iteratif (ML). Paralelisme: partisi data (hash/range), shuffle mahal — minimalkan. Amdahl's law: speedup terbatas oleh bagian sekuensial."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Parallel & Distributed Processing",
+      "title": "3. Tugas-2",
+      "body": [
+        "TUGAS-2 (30%): Analisis & Perancangan Basis Data — pilih kasus (mis. akademik), rancang OLTP ternormalisasi + star schema + pipeline ETL/ELT + justifikasi NoSQL/lakehouse bila relevan. Kriteria: kebenaran konsep, kelengkapan rancangan, kualitas analisis, presentasi."
+      ],
+      "callout": "Istilah Kunci: Batch vs Stream, Lambda vs Kappa, Exactly-once, Shuffle, In-memory"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code># Spark: batch agregat paralel (in-memory)\nfrom pyspark.sql import functions as F\ndf = spark.read.parquet(\"lake/silver/orders/\")\nrev = (df.groupBy(\"date\").agg(F.sum(\"amount\").alias(\"revenue\"))\n         .orderBy(\"date\"))\nrev.write.mode(\"overwrite\").parquet(\"lake/gold/daily_revenue/\")</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Streaming cocok untuk…",
+      "options": [
+        "Laporan bulanan",
+        "Deteksi fraud real-time",
+        "Arsip tahunan",
+        "Backup tape"
+      ],
+      "answer": 1,
+      "explanation": "Latency detik via Kafka + Flink."
+    },
+    {
+      "question": "Arsitektur Kappa…",
+      "options": [
+        "Batch + speed layer",
+        "Semua diperlakukan sebagai stream",
+        "Tanpa data",
+        "Hanya SQL"
+      ],
+      "answer": 1,
+      "explanation": "Satu pipeline stream; Lambda mempertahankan dua layer."
+    },
+    {
+      "question": "Exactly-once membutuhkan…",
+      "options": [
+        "Sink idempotent + checkpoint",
+        "Hapus checkpoint",
+        "Random offset",
+        "Tanpa retry"
+      ],
+      "answer": 0,
+      "explanation": "Agar retry tidak menggandakan efek."
+    },
+    {
+      "question": "Operasi Spark paling mahal…",
+      "options": [
+        "Map",
+        "Filter",
+        "Shuffle",
+        "Cache"
+      ],
+      "answer": 2,
+      "explanation": "Shuffle memindahkan data antar-node via jaringan/disk."
+    },
+    {
+      "question": "Keuntungan in-memory (Spark)…",
+      "options": [
+        "Hindari I/O disk berulang untuk iteratif/ML",
+        "Selalu lebih murah",
+        "Tanpa RAM",
+        "Tanpa partisi"
+      ],
+      "answer": 0,
+      "explanation": "10–100x untuk workload iteratif."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-03",
+  "eyebrow": "Modul 03 · M-059",
+  "title": "Akuisisi & Preparasi Data (Data Acquisition and Preparation)",
+  "lead": "Menjelaskan akuisisi, pelabelan (labeling), pemrosesan awal, dan feature engineering. Mengidentifikasi teknik tiap tahap dan dampaknya ke kualitas data.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Data Acquisition and Preparation",
+      "title": "1. Akuisisi (Acquisition)",
+      "body": [
+        "Sumber: database operasional (CDC), API/REST, file batch (CSV/Parquet), streaming (Kafka), web scraping, EDI. Pertanyaan wajib: pemilik data siapa? frekuensi update? lisensi? skema bisa berubah? Metode integrasi: ETL, ELT, ESB, API gateway."
+      ],
+      "callout": "Bahan Bacaan: Doan et al. (2012) Ch.1-2; Reis & Housley (2022) Ch.3-4"
+    },
+    {
+      "id": "sec-2",
+      "label": "Data Acquisition and Preparation",
+      "title": "2. Pelabelan (Labeling)",
+      "body": [
+        "Untuk supervised learning: manual (annotator), weak supervision (aturan/heuristic), active learning (model meminta label tersulit), crowdsourcing. Ukur inter-annotator agreement (Cohen's kappa). Label yang bias → model bias."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Data Acquisition and Preparation",
+      "title": "3. Preparasi & Feature Engineering",
+      "body": [
+        "Cleaning (lihat Modul 5) → transformation (Modul 6) → feature extraction (TF-IDF/embeddings untuk teks, agregasi window untuk time-series). Dokumentasikan setiap transformasi agar reproducible (data lineage)."
+      ],
+      "callout": "Istilah Kunci: CDC, API ingestion, Web scraping, Weak supervision, Data lineage"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code># Contoh ingest API + simpan mentah (bronze) — pola medallion\nimport requests, json, datetime\nr = requests.get(\"https://api.example.ac.id/mhs\", timeout=30)\nopen(f\"bronze/mhs_{datetime.date.today()}.json\",\"w\").write(r.text)</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "CDC (Change Data Capture) berguna untuk…",
+      "options": [
+        "Menghapus data",
+        "Menangkap perubahan di DB operasional untuk ingest inkremental",
+        "Melabeli gambar",
+        "Enkripsi data"
+      ],
+      "answer": 1,
+      "explanation": "CDC membaca log transaksi → pipeline near-real-time tanpa full scan."
+    },
+    {
+      "question": "Teknik pelabelan yang memakai aturan/heuristic otomatis disebut…",
+      "options": [
+        "Manual annotation",
+        "Weak supervision",
+        "Active learning",
+        "Clustering"
+      ],
+      "answer": 1,
+      "explanation": "Weak supervision: label programatik dari aturan, lalu didenoise."
+    },
+    {
+      "question": "Ukuran kesepakatan antar-anotator yang umum…",
+      "options": [
+        "Akurasi model",
+        "Cohen's kappa",
+        "p-value",
+        "R-squared"
+      ],
+      "answer": 1,
+      "explanation": "Kappa mengoreksi kesepakatan yang terjadi karena kebetulan."
+    },
+    {
+      "question": "ESB dalam integrasi data berfungsi sebagai…",
+      "options": [
+        "Database",
+        "Bus middleware penghubung antar-sistem",
+        "Algoritma ML",
+        "Format file"
+      ],
+      "answer": 1,
+      "explanation": "Enterprise Service Bus merutekan pesan antar aplikasi."
+    },
+    {
+      "question": "Dokumentasi transformasi data (lineage) penting agar…",
+      "options": [
+        "Reproducible & auditable",
+        "Data lebih besar",
+        "Query lebih lambat",
+        "Tidak perlu backup"
+      ],
+      "answer": 0,
+      "explanation": "Lineage = ketertelusuran asal & perubahan data."
+    }
+  ]
+}

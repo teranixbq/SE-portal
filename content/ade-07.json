@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-07",
+  "eyebrow": "Modul 07 · M-059",
+  "title": "Sistem Basis Data Relasional (Relational Database Management System)",
+  "lead": "Menjelaskan konsep, arsitektur, dan komponen utama RDBMS. Mengevaluasi peran RDBMS dalam ekosistem data engineering modern (integritas, kinerja, skalabilitas).",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Relational Database Management System",
+      "title": "1. Konsep & Arsitektur",
+      "body": [
+        "RDBMS: data sebagai relasi + constraint (PK, FK, UNIQUE, CHECK) + ACID (Atomicity, Consistency, Isolation, Durability). Komponen: parser/optimizer (rencana query), executor, storage engine (heap + B-tree index), buffer pool, WAL (write-ahead log), lock/concurrency manager (MVCC)."
+      ],
+      "callout": "Bahan Bacaan: Elmasri & Navathe (2016) Ch.1-2, 17-19; Kleppmann (2017) Ch.7"
+    },
+    {
+      "id": "sec-2",
+      "label": "Relational Database Management System",
+      "title": "2. Integritas & Kinerja",
+      "body": [
+        "Normalisasi (Modul 8) menjaga integritas; index B-tree mempercepat lookup/filter/join tapi memperlambat write. EXPLAIN ANALYZE untuk membaca query plan. Isolasi transaksi: read committed vs repeatable read vs serializable — tradeoff konsistensi vs throughput."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Relational Database Management System",
+      "title": "3. Peran Modern + Tugas-1",
+      "body": [
+        "RDBMS tetap jadi system of record OLTP; analitik berat di-offload ke warehouse/lakehouse via CDC. Justifikasi pemilihan: butuh join kompleks + ACID kuat → RDBMS (PostgreSQL); butuh skala tulis masif/skema fleksibel → NoSQL (Modul 11). TUGAS-1: Analisis & Visualisasi Data (dataset pilihan, EDA + dashboard, dinilai di Mg 7)."
+      ],
+      "callout": "Istilah Kunci: ACID, MVCC, B-tree index, WAL, Query plan, CDC"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Index + lihat query plan\nCREATE INDEX idx_orders_customer_date ON orders(customer_id, order_date);\nEXPLAIN ANALYZE SELECT * FROM orders\nWHERE customer_id = 42 AND order_date &gt;= '2025-01-01';</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Huruf 'A' dalam ACID…",
+      "options": [
+        "Availability",
+        "Atomicity",
+        "Accuracy",
+        "Audit"
+      ],
+      "answer": 1,
+      "explanation": "Atomicity: transaksi all-or-nothing."
+    },
+    {
+      "question": "Struktur indeks default kebanyakan RDBMS…",
+      "options": [
+        "Hash table",
+        "B-tree",
+        "Linked list",
+        "Heap saja"
+      ],
+      "answer": 1,
+      "explanation": "B-tree: seimbang untuk range + point lookup."
+    },
+    {
+      "question": "WAL (Write-Ahead Log) menjamin…",
+      "options": [
+        "Kecepatan baca",
+        "Durability (tahan crash)",
+        "Kompresi",
+        "Enkripsi"
+      ],
+      "answer": 1,
+      "explanation": "Tulis log dulu sebelum data page → bisa recovery."
+    },
+    {
+      "question": "Perintah untuk melihat rencana eksekusi query…",
+      "options": [
+        "EXPLAIN ANALYZE",
+        "SHOW TABLES",
+        "DESCRIBE",
+        "VACUUM"
+      ],
+      "answer": 0,
+      "explanation": "Rencana: seq scan vs index scan, cost, rows."
+    },
+    {
+      "question": "Isolasi tertinggi (paling konsisten, paling lambat)…",
+      "options": [
+        "Read uncommitted",
+        "Read committed",
+        "Repeatable read",
+        "Serializable"
+      ],
+      "answer": 3,
+      "explanation": "Serializable mencegah anomaly konkurensi dengan harga throughput."
+    }
+  ]
+}

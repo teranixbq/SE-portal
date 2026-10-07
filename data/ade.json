@@ -1,0 +1,93 @@
+[
+  {
+    "id": "ade-01",
+    "number": 1,
+    "title": "Pengantar Rekayasa Data (An Overview of Data Engineering)",
+    "status": "available",
+    "summary": "Menjelaskan konsep data, pengolahan data (data processing), dan siklus data (data lifecycle)."
+  },
+  {
+    "id": "ade-02",
+    "number": 2,
+    "title": "Kategorisasi & Sumarisasi Data (Data Categorization and Summarization)",
+    "status": "available",
+    "summary": "Menjelaskan tipe data: nominal, ordinal, interval, rasio; structured, semi-structured, unstructured."
+  },
+  {
+    "id": "ade-03",
+    "number": 3,
+    "title": "Akuisisi & Preparasi Data (Data Acquisition and Preparation)",
+    "status": "available",
+    "summary": "Menjelaskan akuisisi, pelabelan (labeling), pemrosesan awal, dan feature engineering."
+  },
+  {
+    "id": "ade-04",
+    "number": 4,
+    "title": "Tata Kelola Data (Data Governance)",
+    "status": "available",
+    "summary": "Menjelaskan manajemen data, etika data, dan lisensi data."
+  },
+  {
+    "id": "ade-05",
+    "number": 5,
+    "title": "Masalah Umum pada Data (Common Data Issues)",
+    "status": "available",
+    "summary": "Mengidentifikasi anomaly, outlier, missing value, noise, duplikat, inkonsistensi."
+  },
+  {
+    "id": "ade-06",
+    "number": 6,
+    "title": "Transformasi Data & Rekayasa Fitur (Data Transformation & Feature Extraction)",
+    "status": "available",
+    "summary": "Menjelaskan rescaling, reduksi, diskretisasi, sampling, agregasi, normalisasi."
+  },
+  {
+    "id": "ade-07",
+    "number": 7,
+    "title": "Sistem Basis Data Relasional (Relational Database Management System)",
+    "status": "available",
+    "summary": "Menjelaskan konsep, arsitektur, dan komponen utama RDBMS."
+  },
+  {
+    "id": "ade-08",
+    "number": 8,
+    "title": "Normalisasi & Pemodelan Dimensional (Normalization & Dimensional Modelling)",
+    "status": "available",
+    "summary": "Menerapkan normalisasi hingga bentuk normal yang sesuai (1NF–BCNF)."
+  },
+  {
+    "id": "ade-09",
+    "number": 9,
+    "title": "ETL, ELT & Data Pipeline (ETL, ELT, and Data Pipelines)",
+    "status": "available",
+    "summary": "Menganalisis kebutuhan integrasi data."
+  },
+  {
+    "id": "ade-10",
+    "number": 10,
+    "title": "Basis Data Non-Tradisional 1: NoSQL (Non-traditional Data Engineering 1: NoSQL)",
+    "status": "available",
+    "summary": "Menjelaskan 4 tipe NoSQL: document, key-value, column-family, graph."
+  },
+  {
+    "id": "ade-11",
+    "number": 11,
+    "title": "Data Lake, Warehouse & Lakehouse (Data Lake, Warehouse & Lakehouse)",
+    "status": "available",
+    "summary": "Menjelaskan data mart, warehouse, lake, lakehouse."
+  },
+  {
+    "id": "ade-12",
+    "number": 12,
+    "title": "Pemrosesan Paralel & Terdistribusi (+ Tugas-2) (Parallel & Distributed Processing)",
+    "status": "available",
+    "summary": "Menjelaskan batch vs stream, in-memory, parallel computing."
+  },
+  {
+    "id": "ade-13",
+    "number": 13,
+    "title": "Keamanan, Kualitas & Skalabilitas Data (Data Security, Quality & Scalability)",
+    "status": "available",
+    "summary": "Menjelaskan enkripsi, kontrol akses, autentikasi, regulasi privasi."
+  }
+]

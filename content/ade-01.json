@@ -1,0 +1,111 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-01",
+  "eyebrow": "Modul 01 · M-059",
+  "title": "Pengantar Rekayasa Data (An Overview of Data Engineering)",
+  "lead": "Menjelaskan konsep data, pengolahan data (data processing), dan siklus data (data lifecycle). Mengidentifikasi tahapan kegiatan data engineering vs data mining. Membandingkan data engineering vs data mining dari sisi tujuan dan teknik.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "An Overview of Data Engineering",
+      "title": "1. Apa itu Data Engineering?",
+      "body": [
+        "Data Engineering adalah disiplin merancang, membangun, dan mengoperasikan sistem yang mengumpulkan, menyimpan, memproses, dan menyajikan data secara andal (reliable) dan skalabel. Output-nya adalah data yang siap analisis (analytics-ready). Peran kunci: Data Engineer (pipeline & platform), Data Scientist (model), Data Analyst (insight)."
+      ],
+      "callout": "Bahan Bacaan: Reis & Housley (2022) Ch.1-2; Kleppmann (2017) Ch.1"
+    },
+    {
+      "id": "sec-2",
+      "label": "An Overview of Data Engineering",
+      "title": "2. Siklus Data (Data Lifecycle)",
+      "body": [
+        "Generate → Ingest/Collect → Store → Process/Transform → Serve/Analyze → Archive/Purge. Setiap tahap butuh keputusan: format (CSV, JSON, Parquet), storage (object store vs warehouse), dan latency (batch vs real-time). Prinsip FAIR: Findable, Accessible, Interoperable, Reusable."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "An Overview of Data Engineering",
+      "title": "3. Data Engineering vs Data Mining",
+      "body": [
+        "Engineering = membangun 'pabrik dan pipa' datanya (infrastruktur, kualitas, ketersediaan). Mining = menggali 'emas' dari data yang sudah tersedia (pola, prediksi). Keduanya berurutan: tanpa pipeline yang sehat, hasil mining tidak valid (garbage in, garbage out)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-4",
+      "label": "An Overview of Data Engineering",
+      "title": "4. Arsitektur Modern (singkat)",
+      "body": [
+        "OLTP (transaksional, mis. PostgreSQL) → ETL/ELT → Data Warehouse / Data Lake / Lakehouse → BI & ML. Contoh stack lokal: PostgreSQL + Python (pandas) + Apache Airflow + Metabase. Contoh cloud: S3 + Snowflake/BigQuery + dbt."
+      ],
+      "callout": "Istilah Kunci: Data Lifecycle, OLTP vs OLAP, FAIR, Analytics-ready data, GIGO"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Contoh: cek kualitas data mentah dengan SQL\nSELECT status, COUNT(*) AS n,\n  ROUND(100.0*COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct\nFROM raw_orders\nGROUP BY status;</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Tujuan utama Data Engineering adalah…",
+      "options": [
+        "Melatih model ML saja",
+        "Menyediakan data yang andal & siap analisis",
+        "Membuat dashboard saja",
+        "Menghapus data lama"
+      ],
+      "answer": 1,
+      "explanation": "Engineering = fondasi: ingest, store, process, serve secara reliable."
+    },
+    {
+      "question": "Urutan yang benar dalam data lifecycle adalah…",
+      "options": [
+        "Serve → Generate → Store",
+        "Generate → Ingest → Store → Process → Serve → Archive",
+        "Archive → Process → Generate",
+        "Store → Generate → Ingest"
+      ],
+      "answer": 1,
+      "explanation": "Alur hidup data mulai dari dihasilkan hingga diarsipkan."
+    },
+    {
+      "question": "FAIR adalah singkatan dari…",
+      "options": [
+        "Fast, Accurate, Integrated, Ready",
+        "Findable, Accessible, Interoperable, Reusable",
+        "File, Archive, Index, Retrieve",
+        "Filter, Aggregate, Join, Report"
+      ],
+      "answer": 1,
+      "explanation": "Prinsip pengelolaan data penelitian (Wilkinson et al. 2016)."
+    },
+    {
+      "question": "Perbedaan engineering vs mining yang TEPAT…",
+      "options": [
+        "Mining membangun pipeline; engineering menggali pola",
+        "Engineering membangun infrastruktur & kualitas data; mining mengekstrak pola/prediksi",
+        "Keduanya identik",
+        "Engineering tidak butuh kualitas data"
+      ],
+      "answer": 1,
+      "explanation": "GIGO: mining hanya sebaik data yang disiapkan engineering."
+    },
+    {
+      "question": "Contoh system OLTP adalah…",
+      "options": [
+        "PostgreSQL transaksi kampus",
+        "Data warehouse historis",
+        "Data lake mentah",
+        "Dashboard BI"
+      ],
+      "answer": 0,
+      "explanation": "OLTP = transaksi harian (insert/update cepat), OLAP = analitik."
+    }
+  ]
+}

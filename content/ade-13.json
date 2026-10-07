@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-13",
+  "eyebrow": "Modul 13 · M-059",
+  "title": "Keamanan, Kualitas & Skalabilitas Data (Data Security, Quality & Scalability)",
+  "lead": "Menjelaskan enkripsi, kontrol akses, autentikasi, regulasi privasi. Menganalisis mekanisme kontrol + menerapkan optimasi performa.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Data Security, Quality & Scalability",
+      "title": "1. Keamanan & Privasi",
+      "body": [
+        "Enkripsi: at-rest (AES-256) + in-transit (TLS 1.2+). Hash password dengan bcrypt/Argon2 (jangan MD5/SHA1 polos). Kontrol akses: RBAC + least privilege; masking/tokenisasi PII; audit log. Regulasi: UU PDP No. 27/2022 (Indonesia) — consent, hak hapus, breach notification; padanan: GDPR."
+      ],
+      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.10; Eryurek et al. (2021); UU PDP No.27/2022"
+    },
+    {
+      "id": "sec-2",
+      "label": "Data Security, Quality & Scalability",
+      "title": "2. Kualitas (lanjutan gov.)",
+      "body": [
+        "Dimensi: accuracy, completeness, consistency, timeliness, validity, uniqueness. Implementasikan quality gates di pipeline (tolak/karantina batch gagal) + SLO (mis. freshness < 1 jam, completeness > 99%)."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Data Security, Quality & Scalability",
+      "title": "3. Skalabilitas & Optimasi",
+      "body": [
+        "Skala vertikal vs horizontal; partisi + indeks + materialized view; caching; kompresi kolom (Parquet); autoscaling. Ukur sebelum optimasi: EXPLAIN, profiling, benchmark. UAS = Hasil Proyek (30%): demo pipeline + laporan + presentasi."
+      ],
+      "callout": "Istilah Kunci: AES-256/TLS, RBAC, Masking/Tokenisasi, UU PDP, SLO data quality"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Kontrol akses + masking PII (PostgreSQL)\nCREATE ROLE analis LOGIN;\nGRANT SELECT ON gold.daily_revenue TO analis;\n-- masking: tampilkan hanya 4 digit akhir NIM\nSELECT CONCAT('***', RIGHT(nim, 4)) AS nim_masked, ipk FROM mart_akademik;</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Enkripsi data at-rest standar…",
+      "options": [
+        "ROT13",
+        "AES-256",
+        "Base64",
+        "MD5"
+      ],
+      "answer": 1,
+      "explanation": "AES-256 + manajemen kunci (KMS); TLS untuk in-transit."
+    },
+    {
+      "question": "Password harus disimpan sebagai…",
+      "options": [
+        "Plaintext",
+        "MD5",
+        "bcrypt/Argon2 hash + salt",
+        "Base64"
+      ],
+      "answer": 2,
+      "explanation": "Hash adaptif tahan brute-force/GPU."
+    },
+    {
+      "question": "Prinsip least privilege berarti…",
+      "options": [
+        "Semua akses penuh",
+        "Akses minimum sesuai tugas (RBAC)",
+        "Tanpa autentikasi",
+        "Satu akun bersama"
+      ],
+      "answer": 1,
+      "explanation": "RBAC + review berkala + audit log."
+    },
+    {
+      "question": "UU PDP Indonesia…",
+      "options": [
+        "UU No. 27 Tahun 2022",
+        "UU No. 1 Tahun 2000",
+        "Perda parkir",
+        "Tidak ada"
+      ],
+      "answer": 0,
+      "explanation": "Mengatur consent, hak subjek data, notifikasi breach."
+    },
+    {
+      "question": "Contoh SLO kualitas data…",
+      "options": [
+        "Freshness < 1 jam & completeness > 99%",
+        "Server menyala",
+        "Ada WiFi",
+        "Dashboard berwarna"
+      ],
+      "answer": 0,
+      "explanation": "SLO terukur + quality gates otomatis."
+    }
+  ]
+}

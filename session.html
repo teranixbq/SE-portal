@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ruang Belajar · Minilify</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="session">
+  <div class="notion-layout">
+    <aside class="notion-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a class="sidebar-back" href="index.html">← Semua Kuliah</a>
+        <div class="sidebar-course-info">
+          <span class="course-code-badge" id="sidebar-course-code">M-058</span>
+          <h2 id="sidebar-course-name">Software Engineering For Data Science</h2>
+        </div>
+      </div>
+      <div class="sidebar-nav-title">DAFTAR PERTEMUAN</div>
+      <nav class="sidebar-nav" id="sidebar-sessions"></nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn" data-theme>◐ Ganti Tema</button>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <div class="notion-workspace">
+      <header class="notion-topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu-btn" id="sidebar-toggle" aria-label="Menu navigasi">☰</button>
+          <div class="breadcrumbs" id="breadcrumbs">
+            <span id="breadcrumb-course">SE for Data Science</span>
+            <span class="sep">/</span>
+            <span id="breadcrumb-session">Pertemuan 02</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" data-open-quiz>
+            <span class="btn-icon">✓</span> Kuis
+          </button>
+          <button class="topbar-btn" data-open-notes>
+            <span class="btn-icon">✎</span> Catatan
+          </button>
+          <button class="icon-btn" data-theme aria-label="Ganti tema">◐</button>
+        </div>
+      </header>
+
+      <main class="notion-content-scroll" id="doc-scroll">
+        <article class="notion-doc" id="doc-content">
+          <!-- Konten materi dimuat dinamis -->
+        </article>
+      </main>
+    </div>
+
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+    <aside class="right-drawer" id="notes-drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <span class="kicker">CATATAN PRIBADI</span>
+          <h3>Notes Pertemuan Ini</h3>
+        </div>
+        <button class="icon-btn close-btn" data-close-notes aria-label="Tutup catatan">✕</button>
+      </div>
+      <div class="notes-tools">
+        <button data-add-note>＋ Teks</button>
+        <label>＋ Gambar<input id="image-input" type="file" accept="image/*" hidden></label>
+        <button data-export>↓ Backup</button>
+        <label>↑ Pulihkan<input id="import-input" type="file" accept="application/json" hidden></label>
+      </div>
+      <div id="notes-canvas" class="notes-canvas" contenteditable="true" spellcheck="true" data-placeholder="Tulis catatan atau paste gambar di sini..."></div>
+      <p class="save-state" id="save-state">Tersimpan di browser</p>
+    </aside>
+
+    <aside class="right-drawer" id="quiz-drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <span class="kicker">REVIEW CHAPTER</span>
+          <h3 id="quiz-drawer-title">Evaluasi Pemahaman</h3>
+        </div>
+        <button class="icon-btn close-btn" data-close-quiz aria-label="Tutup kuis">✕</button>
+      </div>
+      <div class="quiz-body" id="quiz-body">
+        <!-- Konten kuis dimuat dinamis -->
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/data-store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

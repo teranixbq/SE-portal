@@ -1,0 +1,102 @@
+{
+  "courseId": "ade",
+  "sessionId": "ade-02",
+  "eyebrow": "Modul 02 · M-059",
+  "title": "Kategorisasi & Sumarisasi Data (Data Categorization and Summarization)",
+  "lead": "Menjelaskan tipe data: nominal, ordinal, interval, rasio; structured, semi-structured, unstructured. Menganalisis teknik sumarisasi: ukuran pemusatan, penyebaran, dan visualisasi. Memilih visualisasi yang tepat untuk tiap kategori data.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "label": "Data Categorization and Summarization",
+      "title": "1. Kategorisasi Data",
+      "body": [
+        "Structured (tabel relasional), Semi-structured (JSON, XML, log), Unstructured (teks bebas, citra, audio). Skala ukur Stevens: nominal (kategori tanpa urutan, mis. gender), ordinal (ada urutan, mis. rating), interval (selisih bermakna, nol semu — suhu °C), rasio (nol mutlak — berat, pendapatan)."
+      ],
+      "callout": "Bahan Bacaan: Han et al. (2022) Ch.2 Getting to Know Your Data; Leskovec et al. (2020) Ch.1"
+    },
+    {
+      "id": "sec-2",
+      "label": "Data Categorization and Summarization",
+      "title": "2. Sumarisasi Numerik",
+      "body": [
+        "Pemusatan: mean, median, modus. Penyebaran: range, varians, std-dev, IQR, persentil. Aturan praktis: data skew → pakai median + IQR, bukan mean + std. Laporkan n (jumlah) + missing rate selalu."
+      ],
+      "callout": ""
+    },
+    {
+      "id": "sec-3",
+      "label": "Data Categorization and Summarization",
+      "title": "3. Sumarisasi Grafis",
+      "body": [
+        "Distribusi 1 variabel: histogram, boxplot, bar chart. Hubungan 2 variabel: scatter plot (numerik-numerik), grouped bar / boxplot per kategori. Komposisi: pie hanya untuk ≤5 kategori, selebihnya bar horizontal. Tren waktu: line chart."
+      ],
+      "callout": "Istilah Kunci: Nominal/Ordinal/Interval/Rasio, Mean vs Median, IQR, Histogram vs Bar chart"
+    },
+    {
+      "id": "code-snippet",
+      "label": "Implementasi Praktis",
+      "title": "Contoh Kode & Query",
+      "body": [
+        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+      ],
+      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Ringkasan statistik per kategori (contoh e-commerce)\nSELECT category,\n  COUNT(*) AS n,\n  AVG(price) AS mean_price,\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY price) AS median_price,\n  STDDEV(price) AS sd_price\nFROM products GROUP BY category;</code></pre>"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Suhu 25°C adalah skala…",
+      "options": [
+        "Nominal",
+        "Ordinal",
+        "Interval",
+        "Rasio"
+      ],
+      "answer": 2,
+      "explanation": "Interval: selisih bermakna, nol tidak mutlak (0°C ≠ tidak ada suhu)."
+    },
+    {
+      "question": "Data paling tepat dilaporkan dengan median + IQR ketika…",
+      "options": [
+        "Distribusi normal",
+        "Distribusi skew / ada outlier",
+        "Data kategorikal",
+        "n sangat kecil"
+      ],
+      "answer": 1,
+      "explanation": "Mean sensitif terhadap outlier; median robust."
+    },
+    {
+      "question": "Visualisasi terbaik untuk distribusi 1 variabel numerik…",
+      "options": [
+        "Pie chart",
+        "Histogram / boxplot",
+        "Line chart ganda",
+        "Word cloud"
+      ],
+      "answer": 1,
+      "explanation": "Histogram menunjukkan bentuk distribusi; boxplot menunjukkan kuartil & outlier."
+    },
+    {
+      "question": "File JSON termasuk data…",
+      "options": [
+        "Structured",
+        "Semi-structured",
+        "Unstructured",
+        "Tidak ada"
+      ],
+      "answer": 1,
+      "explanation": "Punya struktur (key-value) tapi fleksibel/tanpa skema kaku."
+    },
+    {
+      "question": "Untuk melihat hubungan 2 variabel numerik gunakan…",
+      "options": [
+        "Bar chart",
+        "Scatter plot",
+        "Pie chart",
+        "Tabel frekuensi"
+      ],
+      "answer": 1,
+      "explanation": "Scatter plot memperlihatkan korelasi & outlier bivariat."
+    }
+  ]
+}
