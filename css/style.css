@@ -64,9 +64,9 @@ button, label { font: inherit; cursor: pointer; }
   border-radius: 8px 8px 8px 2px;
   background: var(--green);
   color: #fff;
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 20px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -.02em;
 }
 .top-actions { display: flex; align-items: center; gap: 12px; }
 .icon-btn {

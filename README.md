@@ -1,26 +1,20 @@
-# Minilify Kuliah Portal
+# SE-Portal
 
-Portal belajar pribadi yang ringan: HTML, CSS, Vanilla JavaScript, dan Nginx di Podman.
+Portal belajar mandiri materi Rekayasa Perangkat Lunak dan Rekayasa Data. 
+Murni file statis (HTML, CSS, JavaScript) — tanpa server, tanpa dependency, langsung jalan di peramban.
 
-## Jalankan
+## Cara Menggunakan
 
-```bash
-cd /home/nodenix/Documents/kuliah-portal
-podman build -t minilify-kuliah .
-podman rm -f minilify-kuliah 2>/dev/null || true
-podman run -d --name minilify-kuliah -p 127.0.0.1:8080:80 minilify-kuliah
+Cukup klik dua kali `index.html` atau buka file tersebut langsung di browser (Chrome, Firefox, Brave, Edge):
+
+```text
+file:///.../index.html
 ```
 
-Buka `http://localhost:8080`.
+## Fitur
 
-## Menambah materi
-
-Tambahkan objek pertemuan di `data/se4ds.json`, lalu buat file content dengan nama yang sama di `content/`. Content memiliki `sections` dan `quiz`. PDF adalah referensi knowledge; halaman membaca memakai penjelasan ulang.
-
-## Notes
-
-Catatan tersimpan di browser dengan `localStorage` supaya tidak membutuhkan backend atau volume. Gambar paste dan drag-drop didukung. Gunakan `backup` untuk mengunduh JSON, lalu `pulihkan` untuk mengembalikannya. Satu browser/perangkat adalah batas penyimpanan versi ringan ini.
-
-## Guideline
-
-Data dipisahkan dari UI, tanpa dependency tambahan, dan tiap file utama dijaga di bawah 400 baris. Fitur yang benar-benar membutuhkan server dapat ditambahkan nanti tanpa mengubah format materi.
+1. **Pilihan Mata Kuliah**: Menampilkan mata kuliah aktif dan silabus materi.
+2. **Navigasi Sidebar**: Daftar pertemuan/modul berurutan.
+3. **Catatan Pribadi**: Editor catatan dan upload gambar yang tersimpan otomatis di browser (`localStorage`).
+4. **Kuis Interaktif**: Kuis review chapter lengkap dengan evaluasi dan pembahasan kunci jawaban.
+5. **Mode Gelap / Terang**: Pengaturan tema tersimpan otomatis.

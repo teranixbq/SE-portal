@@ -26,17 +26,17 @@ const getJSON = async url => {
 };
 
 function theme() {
-  const saved = localStorage.getItem('minilify-theme');
+  const saved = localStorage.getItem('se-portal-theme') || localStorage.getItem('minilify-theme');
   if (saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches)) document.body.classList.add('dark');
   $$('[data-theme]').forEach(b => b.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    localStorage.setItem('minilify-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    localStorage.setItem('se-portal-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   }));
 }
 
 function addRecent(item) {
-  const old = JSON.parse(localStorage.getItem('minilify-recent') || '[]').filter(x => x.id !== item.id);
-  localStorage.setItem('minilify-recent', JSON.stringify([{ ...item, time: Date.now() }, ...old].slice(0, 5)));
+  const old = JSON.parse(localStorage.getItem('se-portal-recent') || localStorage.getItem('minilify-recent') || '[]').filter(x => x.id !== item.id);
+  localStorage.setItem('se-portal-recent', JSON.stringify([{ ...item, time: Date.now() }, ...old].slice(0, 5)));
 }
 
 function timeAgo(time) {
@@ -57,7 +57,7 @@ async function home() {
   const courses = await getJSON('data/courses.json');
   $('#course-count').textContent = `${courses.length} koleksi`;
   $('#course-grid').innerHTML = courses.map(courseCard).join('');
-  const recent = JSON.parse(localStorage.getItem('minilify-recent') || '[]');
+  const recent = JSON.parse(localStorage.getItem('se-portal-recent') || localStorage.getItem('minilify-recent') || '[]');
   if (!recent.length) return;
   $('.recent-wrap').hidden = false;
   $('#recent-list').innerHTML = recent.slice(0, 3).map(x => `<a class="recent-item" href="session.html?course=${x.course}&session=${x.id}"><b>${x.title}</b><small>${x.courseName} · ${timeAgo(x.time)} →</small></a>`).join('');
@@ -103,13 +103,15 @@ function openDrawer(type) {
 }
 
 function bindNotes(course, session) {
-  const canvas = $('#notes-canvas'), key = `minilify-notes:${course}:${session}`;
+  const canvas = $('#notes-canvas');
+  const key = `se-portal-notes:${course}:${session}`;
+  const legacyKey = `minilify-notes:${course}:${session}`;
   if (!canvas) return;
   const save = () => {
     localStorage.setItem(key, canvas.innerHTML);
     $('#save-state').textContent = 'tersimpan otomatis · ' + new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
   };
-  canvas.innerHTML = localStorage.getItem(key) || '';
+  canvas.innerHTML = localStorage.getItem(key) || localStorage.getItem(legacyKey) || '';
   canvas.oninput = save;
   $('[data-add-note]').onclick = () => {
     const note = document.createElement('div');
@@ -285,7 +287,7 @@ async function sessionPage() {
   $('#sidebar-course-name').textContent = course.name;
   $('#breadcrumb-course').textContent = course.shortName || course.name;
 
-  let currentSessionId = params.get('session') || localStorage.getItem(`minilify-last:${courseId}`);
+  let currentSessionId = params.get('session') || localStorage.getItem(`se-portal-last:${courseId}`) || localStorage.getItem(`minilify-last:${courseId}`);
   if (!sessions.some(s => s.id === currentSessionId)) {
     currentSessionId = sessions.find(s => s.status === 'available')?.id || sessions[0]?.id || 'pertemuan-01';
   }
@@ -339,7 +341,7 @@ async function sessionPage() {
     const labelPrefix = courseId === 'ade' ? 'Modul ' : 'Pertemuan ';
 
     history.replaceState(null, '', `session.html?course=${courseId}&session=${id}`);
-    localStorage.setItem(`minilify-last:${courseId}`, id);
+    localStorage.setItem(`se-portal-last:${courseId}`, id);
     $('#breadcrumb-session').textContent = `${labelPrefix}${sessionNumStr}`;
     renderSidebar(id);
     closeDrawers();
