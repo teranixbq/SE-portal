@@ -2,110 +2,117 @@
   "courseId": "ade",
   "sessionId": "ade-01",
   "eyebrow": "Modul 01 · M-059",
-  "title": "Pengantar Rekayasa Data (An Overview of Data Engineering)",
-  "lead": "Menjelaskan konsep data, pengolahan data (data processing), dan siklus data (data lifecycle). Mengidentifikasi tahapan kegiatan data engineering vs data mining. Membandingkan data engineering vs data mining dari sisi tujuan dan teknik.",
+  "title": "Pengantar Rekayasa Data (Overview of Data Engineering)",
+  "lead": "Memahami definisi data dan data engineering, piramida DIKW, karakteristik Big Data (8V), tantangan rekayasa, perbedaan peran profesional data, arsitektur pipeline, serta 14 aktivitas inti data engineer.",
   "sections": [
     {
-      "id": "sec-1",
-      "label": "An Overview of Data Engineering",
-      "title": "1. Apa itu Data Engineering?",
+      "id": "definisi",
+      "label": "Definisi & Fondasi",
+      "title": "1. Apa itu Data dan Rekayasa Data (Data Engineering)?",
       "body": [
-        "Data Engineering adalah disiplin merancang, membangun, dan mengoperasikan sistem yang mengumpulkan, menyimpan, memproses, dan menyajikan data secara andal (reliable) dan skalabel. Output-nya adalah data yang siap analisis (analytics-ready). Peran kunci: Data Engineer (pipeline & platform), Data Scientist (model), Data Analyst (insight)."
+        "Data didefinisikan sebagai representasi fakta, konsep, atau instruksi dalam bentuk terformalisasi yang cocok untuk komunikasi, interpretasi, atau pemrosesan oleh manusia maupun sistem otomatis (Hicks 1993, dikutip oleh Checkland dan Holwell 1998). DAMA (2021) menambahkan bahwa data adalah fakta individual yang disajikan dalam bentuk teks, angka, grafik, citra, audio, atau video yang berada di luar konteks dan belum memiliki makna inheren.",
+        "Data Engineering adalah subdisiplin rekayasa perangkat lunak (software engineering) yang berfokus pada transportasi, transformasi, dan pengelolaan data. Jika IEEE mendefinisikan rekayasa perangkat lunak sebagai penerapan pendekatan yang sistematis, berdisiplin, dan terukur terhadap pengembangan, pengoperasian, dan pemeliharaan perangkat lunak, maka rekayasa data adalah penerapan prinsip perangkat lunak tersebut khusus untuk menangani pergerakan dan tata kelola data."
       ],
-      "callout": "Bahan Bacaan: Reis & Housley (2022) Ch.1-2; Kleppmann (2017) Ch.1"
+      "callout": "Piramida DIKW: Data (fakta mentah) → Information (data berkonteks) → Knowledge (pemahaman pola & wawasan) → Wisdom (kemampuan mengambil keputusan terapan)."
     },
     {
-      "id": "sec-2",
-      "label": "An Overview of Data Engineering",
-      "title": "2. Siklus Data (Data Lifecycle)",
+      "id": "ekonomi-data",
+      "label": "Ekonomi Informasi",
+      "title": "2. Data as the New Oil & Penggerak Ekonomi Digital",
       "body": [
-        "Generate → Ingest/Collect → Store → Process/Transform → Serve/Analyze → Archive/Purge. Setiap tahap butuh keputusan: format (CSV, JSON, Parquet), storage (object store vs warehouse), dan latency (batch vs real-time). Prinsip FAIR: Findable, Accessible, Interoperable, Reusable."
+        "Minyak bumi menggerakkan ekonomi industri masa lalu dan bersifat terbatas (finite). Sebaliknya, data menggerakkan ekonomi informasi modern: jumlah pengetahuan yang diperoleh berbanding lurus dengan data yang dimiliki, di mana ekstraksi informasi membutuhkan pengumpulan, pemrosesan, dan analisis yang berkelanjutan.",
+        "Studi kasus implementasi industri: Amazon merevolusi e-commerce melalui rekomendasi terpersonalisasi, anticipatory shipping, dan dynamic pricing. Netflix beralih dari rental DVD ke layanan streaming berbasis Big Data (termasuk sayembara algoritma $1 Juta USD pada 2006-2009). Platform media sosial seperti Facebook memanfaatkan pelacakan perilaku pengguna secara real-time untuk penargetan iklan presisi."
       ],
-      "callout": ""
+      "callout": "Data Never Sleeps: miliaran pencarian, transaksi perbankan, streaming video, dan pertukaran pesan diproduksi setiap menit di seluruh dunia."
     },
     {
-      "id": "sec-3",
-      "label": "An Overview of Data Engineering",
-      "title": "3. Data Engineering vs Data Mining",
+      "id": "karakteristik-big-data",
+      "label": "Karakteristik Data",
+      "title": "3. Karakteristik Big Data: The 8 V's & Tantangan Rekayasa",
       "body": [
-        "Engineering = membangun 'pabrik dan pipa' datanya (infrastruktur, kualitas, ketersediaan). Mining = menggali 'emas' dari data yang sudah tersedia (pola, prediksi). Keduanya berurutan: tanpa pipeline yang sehat, hasil mining tidak valid (garbage in, garbage out)."
+        "Karakteristik Big Data dirangkum ke dalam 8V: Volume (besaran data sesuai kebutuhan), Velocity (kecepatan data masuk), Variety (sumber data heterogen), Variability (variasi laju data seiring waktu), Veracity (akurasi dan kebenaran data), Value (nilai bisnis saat data paling dibutuhkan), Visualization (kemampuan disajikan dalam format yang dipahami), dan Vulnerability (keamanan dan kerentanan data).",
+        "Tantangan rekayasa pada Big Data meliputi: bagaimana mengakumulasi data dari beragam sumber berbeda, menyimpan dan memindahkan data raksasa dengan cepat, menangani data tidak terstruktur (unstructured data), menyaring data yang relevan, serta menjamin pencegahan kehilangan data (zero data loss)."
       ],
-      "callout": ""
+      "callout": "Kebutuhan utama rekayasa data: menangani data skala produksi dengan kecepatan dan akurasi tinggi, serta mengotomatisasi pipeline tanpa langkah manual."
     },
     {
-      "id": "sec-4",
-      "label": "An Overview of Data Engineering",
-      "title": "4. Arsitektur Modern (singkat)",
+      "id": "peran-profesi",
+      "label": "Ekosistem Peran",
+      "title": "4. Data Engineer vs Data Scientist vs Machine Learning Engineer",
       "body": [
-        "OLTP (transaksional, mis. PostgreSQL) → ETL/ELT → Data Warehouse / Data Lake / Lakehouse → BI & ML. Contoh stack lokal: PostgreSQL + Python (pandas) + Apache Airflow + Metabase. Contoh cloud: S3 + Snowflake/BigQuery + dbt."
+        "Sebagian besar Data Scientist menghabiskan hingga 80% waktunya untuk aktivitas data engineering jika fondasi sistem belum matang. Pembagian peran spesifik dalam organisasi modern:",
+        "Data Engineer: Membangun dan mengoptimalkan sistem serta pipeline penanganan data bervolume besar, serta memastikan data bersih dan berkualitas tinggi siap diakses pemangku kepentingan.",
+        "Data Scientist: Mengeksplorasi data di data warehouse/mart untuk menemukan pola bisnis, membuat hipotesis, dan melatih model analitik terbaik.",
+        "Machine Learning Engineer: Mengambil model data science menuju tahap produksi, mengimplementasikan proses retraining otomatis, dan mengelola batch scoring serta real-time inference."
       ],
-      "callout": "Istilah Kunci: Data Lifecycle, OLTP vs OLAP, FAIR, Analytics-ready data, GIGO"
+      "callout": "Data pipeline menghubungkan sumber data dengan sistem target, mengotomatisasi alur hidup data dari penciptaan hingga analisis."
     },
     {
-      "id": "code-snippet",
-      "label": "Implementasi Praktis",
-      "title": "Contoh Kode & Query",
+      "id": "aktivitas-rekayasa",
+      "label": "Aktivitas Inti",
+      "title": "5. Spektrum Aktivitas Rekayasa Data Modern",
       "body": [
-        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+        "Aktivitas kunci data engineer mencakup: (1) Ingestion & Extraction dari basis data transaksi, API, sensor IoT, dan web scraping; (2) Data Integration & Loading ke data warehouse atau data lake; (3) Processing Pipeline untuk streaming real-time maupun batch terjadwal; (4) Data Storage architecture (Data Lake untuk mentah/unstructured, Data Warehouse untuk terstruktur); (5) Scalable Architecture secara horizontal dan vertikal di cloud atau on-premise; (6) Parallel Processing dengan Apache Hadoop dan Spark; (7) Transformation & Data Validation untuk membersihkan duplikat, outlier, dan missing values.",
+        "Selain infrastruktur dasar, data engineer bertanggung jawab atas: (8) Data Catalog & Metadata untuk melacak inventaris aset dan silsilah data (lineage); (9) Monitoring & Logging dengan mekanisme failover dan retry; (10) Performance Optimization melalui indexing, partisi, dan alokasi resource; (11) Data Sharing & Security dengan enkripsi dan Privacy Enhancing Technologies; (12) Compliance & Governance terhadap regulasi perlindungan data seperti GDPR, HIPAA, dan UU PDP No. 27/2022; serta (13) Workflow Orchestration menggunakan alat seperti Apache Airflow."
       ],
-      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Contoh: cek kualitas data mentah dengan SQL\nSELECT status, COUNT(*) AS n,\n  ROUND(100.0*COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct\nFROM raw_orders\nGROUP BY status;</code></pre>"
+      "callout": "Sertifikasi industri rujukan: Databricks Certified Data Engineer, Snowflake SnowPro, Google Cloud Professional Data Engineer, AWS Certified Data Engineer Associate, dan Microsoft Azure DP-203."
     }
   ],
   "quiz": [
     {
-      "question": "Tujuan utama Data Engineering adalah…",
+      "question": "Menurut IEEE dan materi kuliah, apa definisi Data Engineering yang paling tepat?",
       "options": [
-        "Melatih model ML saja",
-        "Menyediakan data yang andal & siap analisis",
-        "Membuat dashboard saja",
-        "Menghapus data lama"
+        "Subdisiplin ilmu komunikasi yang mempelajari penyebaran berita digital",
+        "Subdisiplin rekayasa perangkat lunak yang berfokus pada transportasi, transformasi, dan pengelolaan data secara terukur",
+        "Kegiatan manual memasukkan data spreadsheet ke dalam dokumen laporan",
+        "Proses merancang tampilan antarmuka (UI) untuk aplikasi mobile"
       ],
       "answer": 1,
-      "explanation": "Engineering = fondasi: ingest, store, process, serve secara reliable."
+      "explanation": "Data engineering adalah subdisiplin software engineering yang menerapkan pendekatan sistematis dan terukur khusus pada transportasi, transformasi, dan manajemen data."
     },
     {
-      "question": "Urutan yang benar dalam data lifecycle adalah…",
+      "question": "Pada piramida DIKW, tingkatan yang tepat dari dasar hingga puncak adalah…",
       "options": [
-        "Serve → Generate → Store",
-        "Generate → Ingest → Store → Process → Serve → Archive",
-        "Archive → Process → Generate",
-        "Store → Generate → Ingest"
+        "Wisdom → Knowledge → Information → Data",
+        "Data → Information → Knowledge → Wisdom",
+        "Data → Knowledge → Information → Wisdom",
+        "Information → Data → Wisdom → Knowledge"
       ],
       "answer": 1,
-      "explanation": "Alur hidup data mulai dari dihasilkan hingga diarsipkan."
+      "explanation": "Alur DIKW dimulai dari Data mentah, diolah menjadi Information berkonteks, dipahami menjadi Knowledge, hingga diterapkan sebagai Wisdom."
     },
     {
-      "question": "FAIR adalah singkatan dari…",
+      "question": "Manakah di bawah ini yang merupakan salah satu dari 8 V karakteristik Big Data?",
       "options": [
-        "Fast, Accurate, Integrated, Ready",
-        "Findable, Accessible, Interoperable, Reusable",
-        "File, Archive, Index, Retrieve",
-        "Filter, Aggregate, Join, Report"
-      ],
-      "answer": 1,
-      "explanation": "Prinsip pengelolaan data penelitian (Wilkinson et al. 2016)."
-    },
-    {
-      "question": "Perbedaan engineering vs mining yang TEPAT…",
-      "options": [
-        "Mining membangun pipeline; engineering menggali pola",
-        "Engineering membangun infrastruktur & kualitas data; mining mengekstrak pola/prediksi",
-        "Keduanya identik",
-        "Engineering tidak butuh kualitas data"
-      ],
-      "answer": 1,
-      "explanation": "GIGO: mining hanya sebaik data yang disiapkan engineering."
-    },
-    {
-      "question": "Contoh system OLTP adalah…",
-      "options": [
-        "PostgreSQL transaksi kampus",
-        "Data warehouse historis",
-        "Data lake mentah",
-        "Dashboard BI"
+        "Veracity, Variety, Velocity, Vulnerability",
+        "Virtual, Validity, Vector, Variable",
+        "Vanilla, Voltage, Value, Vibration",
+        "Volume, Vertex, Version, View"
       ],
       "answer": 0,
-      "explanation": "OLTP = transaksi harian (insert/update cepat), OLAP = analitik."
+      "explanation": "8 V's Big Data meliputi Volume, Velocity, Variety, Variability, Veracity, Value, Visualization, dan Vulnerability."
+    },
+    {
+      "question": "Berapa persen rata-rata waktu yang dihabiskan data scientist untuk aktivitas rekayasa data jika infrastruktur pipeline belum matang?",
+      "options": [
+        "Sekitar 10%",
+        "Sekitar 20%",
+        "Sekitar 50%",
+        "Sekitar 80%"
+      ],
+      "answer": 3,
+      "explanation": "Survei industri menunjukkan data scientist menghabiskan 80% waktunya untuk mengumpulkan, membersihkan, dan menyiapkan data (data engineering), dan hanya 20% untuk pemodelan."
+    },
+    {
+      "question": "Apa perbedaan utama tanggung jawab antara Data Engineer dan Machine Learning Engineer?",
+      "options": [
+        "Data Engineer membangun pipeline dan ketersediaan data bersih skala besar; ML Engineer membawa model ke production dan mengatur retraining",
+        "Data Engineer hanya membuat grafik; ML Engineer membersihkan data tabel",
+        "Data Engineer mengelola budget keuangan; ML Engineer menulis skrip database",
+        "Keduanya adalah peran yang sepenuhnya sama tanpa perbedaan tugas"
+      ],
+      "answer": 0,
+      "explanation": "Data engineer fokus pada sistem pipeline, storage, dan ketersediaan data andal, sedangkan ML engineer fokus mengoperasikan dan mengotomatisasi siklus hidup model ML di lingkungan produksi."
     }
   ]
 }

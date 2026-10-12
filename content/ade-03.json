@@ -3,100 +3,126 @@
   "sessionId": "ade-03",
   "eyebrow": "Modul 03 · M-059",
   "title": "Akuisisi & Preparasi Data (Data Acquisition and Preparation)",
-  "lead": "Menjelaskan akuisisi, pelabelan (labeling), pemrosesan awal, dan feature engineering. Mengidentifikasi teknik tiap tahap dan dampaknya ke kualitas data.",
+  "lead": "Standar format file data, metode akuisisi dan elisitasi kebutuhan data, infrastruktur anotasi, pembersihan data, transformasi, integrasi, resampling, serta teknik rekayasa fitur (feature engineering).",
   "sections": [
     {
-      "id": "sec-1",
-      "label": "Data Acquisition and Preparation",
-      "title": "1. Akuisisi (Acquisition)",
+      "id": "format-data",
+      "label": "Standar Format",
+      "title": "1. Rekomendasi Format Data Terbuka vs Format Proprietary",
       "body": [
-        "Sumber: database operasional (CDC), API/REST, file batch (CSV/Parquet), streaming (Kafka), web scraping, EDI. Pertanyaan wajib: pemilik data siapa? frekuensi update? lisensi? skema bisa berubah? Metode integrasi: ETL, ELT, ESB, API gateway."
+        "Pemilihan format data menentukan keberlanjutan arsip, portabilitas, dan kemudahan pemrosesan pada pipeline data:",
+        "Dokumen Teks: Format yang direkomendasikan adalah Unicode text (.txt), PDF/A (.pdf), dan OpenDocument Text (.odt). Format seperti Microsoft Word (.doc, .docx) dan Rich Text (.rtf) tidak direkomendasikan karena bersifat proprietary dan bergantung pada lisensi vendor.",
+        "Spreadsheet & Data Tabular: Direkomendasikan CSV (.csv) dan OpenDocument Spreadsheet (.ods). Format Microsoft Excel (.xls, .xlsx) dan PDF tabular tidak direkomendasikan untuk pipeline analitik langsung.",
+        "Database: Direkomendasikan ekspor SQL dump (.sql) dan CSV (.csv). Hindari Microsoft Access (.mdb) atau format tertutup lainnya.",
+        "Data Spasial / GIS: Direkomendasikan GeoJSON (.json). Hindari format Shapefile (.shp) atau Esri Geodatabase (.gdb) bila memerlukan interoperabilitas terbuka.",
+        "Media Gambar & Video: Direkomendasikan format JPEG (.jpg/.jpeg), TIFF (.tiff), PNG (.png), dan SVG (.svg) untuk citra; Matroska (.mkv) untuk video terbuka."
       ],
-      "callout": "Bahan Bacaan: Doan et al. (2012) Ch.1-2; Reis & Housley (2022) Ch.3-4"
+      "callout": "Format data terbuka (open standards) menjamin prinsip FAIR (Findable, Accessible, Interoperable, Reusable) dan mencegah vendor lock-in jangka panjang."
     },
     {
-      "id": "sec-2",
-      "label": "Data Acquisition and Preparation",
-      "title": "2. Pelabelan (Labeling)",
+      "id": "metode-akuisisi",
+      "label": "Metode Akuisisi",
+      "title": "2. Konsep Akuisisi Data & Elisitasi Kebutuhan",
       "body": [
-        "Untuk supervised learning: manual (annotator), weak supervision (aturan/heuristic), active learning (model meminta label tersulit), crowdsourcing. Ukur inter-annotator agreement (Cohen's kappa). Label yang bias → model bias."
+        "Definisi Akuisisi Data: Proses atau kegiatan mengamati fenomena alam, sosial, atau teknis secara langsung maupun tidak langsung menggunakan peralatan/instrumen tertentu untuk menghasilkan data yang dapat diproses komputer demi menjawab pertanyaan tertentu.",
+        "Aktivitas yang BUKAN Akuisisi Data: (1) Mengunduh dataset publik dari repositori internet; (2) Membeli dataset teknis dari data provider; (3) Meminta data yang dibagikan oleh rekan kerja; (4) Mengumpulkan data acak dari situs web tanpa instrumen observasi terkalibrasi.",
+        "Metode Pengumpulan Data: Eksperimen laboratorium dan uji lapangan (field trials), survei kuesioner kuantitatif dan kualitatif, wawancara mendalam dan Focus Group Discussion (FGD), Web Scraping dan pemantauan media sosial secara terprogram, Sensor & IoT Data Collection (menghasilkan data presisi tinggi namun memerlukan instrumen mahal), serta Crowdsourcing-based data collection.",
+        "Tahapan Elisitasi Kebutuhan Data: Mengidentifikasi dokumentasi proyek & sistem → Identifikasi pemangku kepentingan (stakeholders) → Wawancara terstruktur → Meringkas gap kebutuhan → Dokumentasi workflow informasi → Pembuatan matriks Fact/Qualifier → Harmonisasi semantik elemen data → Penyusunan pemetaan Source-to-Target (STTM)."
       ],
-      "callout": ""
+      "callout": "Source-to-Target Mapping (STTM) adalah cetak biru teknis data engineer yang memetakan kolom sumber data asli ke tabel target di data warehouse."
     },
     {
-      "id": "sec-3",
-      "label": "Data Acquisition and Preparation",
-      "title": "3. Preparasi & Feature Engineering",
+      "id": "anotasi-labeling",
+      "label": "Anotasi Data",
+      "title": "3. Infrastruktur Anotasi dan Pelabelan untuk Pembelajaran Mesin",
       "body": [
-        "Cleaning (lihat Modul 5) → transformation (Modul 6) → feature extraction (TF-IDF/embeddings untuk teks, agregasi window untuk time-series). Dokumentasikan setiap transformasi agar reproducible (data lineage)."
+        "Model Supervised Learning memerlukan data berlabel (annotated/labeled data) agar dapat dilatih. Meskipun pelabelan data biasanya dikerjakan oleh pakar domain (domain experts/annotators), data engineer bertanggung jawab membangun sistem dan infrastruktur yang memfasilitasi proses pelabelan tersebut.",
+        "Bentuk-bentuk anotasi populer meliputi: (1) Object Detection — pembuatan bounding box pada citra objek; (2) Named Entity Recognition (NER) — pelabelan entitas bernama pada teks kalimat (seperti nama orang, institusi, lokasi, atau tanggal); (3) Structure Tagging — penandaan hierarki struktur dan relasi pada dokumen semi-terstruktur.",
+        "Tanggung jawab data engineer mencakup penyediaan platform anotasi yang mudah digunakan (misalnya alat anotasi web), penanganan alur ingest data mentah ke alat anotasi, serta ekstraksi hasil anotasi ke repositori pelatihan model."
       ],
-      "callout": "Istilah Kunci: CDC, API ingestion, Web scraping, Weak supervision, Data lineage"
+      "callout": "Alat anotasi yang baik memisahkan kompleksitas teknis pipeline dari pengguna awam, sehingga pakar domain dapat fokus memvalidasi akurasi label."
     },
     {
-      "id": "code-snippet",
-      "label": "Implementasi Praktis",
-      "title": "Contoh Kode & Query",
+      "id": "preprocessing-cleaning",
+      "label": "Pembersihan Data",
+      "title": "4. Preprocessing: Pembersihan, Transformasi, Integrasi & Resampling",
       "body": [
-        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+        "Pembersihan Data (Data Cleaning): (1) Penanganan Nilai Hilang (Missing Values) melalui penghapusan (deletion baris/kolom) atau imputasi nilai pengganti (mean, median, mode, atau KNN imputation); (2) Penghapusan Duplikat untuk menjaga keunikan rekaman; (3) Deteksi & Penanganan Outlier menggunakan z-score atau rentang IQR, dengan keputusan pemangkasan (capping), transformasi log, atau investigasi; (4) Reduksi Noise melalui teknik binning, regresi, atau clustering.",
+        "Transformasi Data: Konversi satuan agar konsisten, Normalisasi min-max untuk memetakan nilai ke rentang [0, 1], Standardisasi z-score untuk menghasilkan nilai berpusat pada mean 0 dan standar deviasi 1, transformasi logaritmik untuk mereduksi kemiringan distribusi, serta diskretisasi/binning variabel kontinu menjadi kategori berbasis equal-width atau equal-frequency.",
+        "Integrasi & Resampling: Penggabungan data lintas sumber (joins dan concatenation), standardisasi format yang bertentangan, serta teknik penyeimbangan kelas data imbalans melalui Oversampling (duplikasi data minoritas atau algoritma SMOTE) dan Undersampling (pengurangan data mayoritas)."
       ],
-      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code># Contoh ingest API + simpan mentah (bronze) — pola medallion\nimport requests, json, datetime\nr = requests.get(\"https://api.example.ac.id/mhs\", timeout=30)\nopen(f\"bronze/mhs_{datetime.date.today()}.json\",\"w\").write(r.text)</code></pre>"
+      "callout": "Aturan emas preprocessing: Lakukan transformasi fitting (scaler, encoder) HANYA pada data training, lalu terapkan transformasinya pada data testing untuk mencegah kebocoran data (data leakage)."
+    },
+    {
+      "id": "feature-engineering",
+      "label": "Rekayasa Fitur",
+      "title": "5. Feature Engineering: Encoding, Creation, Extraction & Selection",
+      "body": [
+        "Feature engineering adalah proses mentransformasikan data mentah menjadi fitur representatif yang meningkatkan performa model pembelajaran mesin.",
+        "Categorical Encoding: One-Hot Encoding (mengubah kategori menjadi vektor biner terpisah), Label Encoding (mengubah kategori menjadi angka integer berurutan), serta Frequency atau Target Encoding (menggantikan kategori dengan statistik agregat target).",
+        "Feature Creation: Pembuatan fitur turunan (contoh: total belanja = kuantitas x harga satuan), fitur polinomial & interaksi fitur non-linear, serta transformasi berbasis domain pengetahuan (seperti mengekstrak jam sibuk, hari kerja, dan musim dari kolom tanggal/waktu).",
+        "Feature Extraction: Reduksi dimensi tinggi menggunakan PCA (Principal Component Analysis) atau t-SNE, representasi terkompresi dengan Autoencoder, serta vektorisasi teks ke bentuk numerik melalui TF-IDF, Word2Vec, GloVe, atau BERT.",
+        "Feature Selection: (1) Filter Methods — uji statistik independen dari model (seperti Chi-Square, ANOVA, korelasi); (2) Wrapper Methods — mengevaluasi kombinasi fitur berdasarkan akurasi model latih (contoh: Recursive Feature Elimination / RFE); (3) Embedded Methods — seleksi fitur otomatis yang menjadi bagian dari algoritma pelatihan (contoh: regresi Lasso L1 regularization dan penalti pada Decision Trees).",
+        "Tugas Praktikum: Pembuatan Colab notebook yang mengakuisisi dataset negara dari API restcountries.com, kurs valuta asing, cuaca ibukota, data COVID-19 disease.sh, menjalankan preprocessing/feature engineering, dan mengekspor hasil ke CSV beserta visualisasi ringkasannya."
+      ],
+      "callout": "Tiga pilar seleksi fitur: Filter (cepat, berbasis statistik) → Wrapper (akurat namun komputasi berat) → Embedded (terintegrasi otomatis dalam model)."
     }
   ],
   "quiz": [
     {
-      "question": "CDC (Change Data Capture) berguna untuk…",
+      "question": "Format file manakah yang paling direkomendasikan untuk penyimpanan data tabular terbuka jangka panjang?",
       "options": [
-        "Menghapus data",
-        "Menangkap perubahan di DB operasional untuk ingest inkremental",
-        "Melabeli gambar",
-        "Enkripsi data"
+        "Microsoft Excel (.xlsx)",
+        "Comma Separated Values (.csv) atau OpenDocument Spreadsheet (.ods)",
+        "Rich Text Format (.rtf)",
+        "PDF File (.pdf)"
       ],
       "answer": 1,
-      "explanation": "CDC membaca log transaksi → pipeline near-real-time tanpa full scan."
+      "explanation": "Format CSV dan ODS adalah standar terbuka yang tidak bergantung pada lisensi perangkat lunak berbayar dan dapat dibaca lintas platform."
     },
     {
-      "question": "Teknik pelabelan yang memakai aturan/heuristic otomatis disebut…",
+      "question": "Manakah kegiatan berikut yang BENAR-BENAR dikategorikan sebagai 'akuisisi data' menurut konsep rekayasa data?",
       "options": [
-        "Manual annotation",
-        "Weak supervision",
-        "Active learning",
-        "Clustering"
+        "Mengunduh file zip dataset dari Kaggle",
+        "Membeli dataset statistik dari agensi riset",
+        "Mengamati fenomena suhu dan kelembaban langsung menggunakan instrumen sensor IoT terkalibrasi",
+        "Menyalin tabel dari halaman Wikipedia secara manual"
       ],
-      "answer": 1,
-      "explanation": "Weak supervision: label programatik dari aturan, lalu didenoise."
+      "answer": 2,
+      "explanation": "Akuisisi data adalah proses mengamati fenomena alam, sosial, atau teknis secara langsung/tidak langsung menggunakan instrumen pengukur untuk menghasilkan data yang dapat diproses komputer."
     },
     {
-      "question": "Ukuran kesepakatan antar-anotator yang umum…",
+      "question": "Apa perbedaan utama antara Normalisasi min-max dan Standardisasi z-score?",
       "options": [
-        "Akurasi model",
-        "Cohen's kappa",
-        "p-value",
-        "R-squared"
-      ],
-      "answer": 1,
-      "explanation": "Kappa mengoreksi kesepakatan yang terjadi karena kebetulan."
-    },
-    {
-      "question": "ESB dalam integrasi data berfungsi sebagai…",
-      "options": [
-        "Database",
-        "Bus middleware penghubung antar-sistem",
-        "Algoritma ML",
-        "Format file"
-      ],
-      "answer": 1,
-      "explanation": "Enterprise Service Bus merutekan pesan antar aplikasi."
-    },
-    {
-      "question": "Dokumentasi transformasi data (lineage) penting agar…",
-      "options": [
-        "Reproducible & auditable",
-        "Data lebih besar",
-        "Query lebih lambat",
-        "Tidak perlu backup"
+        "Normalisasi menghasilkan rentang [0, 1], sedangkan Standardisasi menghasilkan nilai dengan mean 0 dan standar deviasi 1",
+        "Normalisasi hanya untuk teks, sedangkan Standardisasi untuk gambar",
+        "Normalisasi memerlukan penghapusan duplikat, sedangkan Standardisasi tidak",
+        "Keduanya adalah rumus matematika yang menghasilkan nilai identik"
       ],
       "answer": 0,
-      "explanation": "Lineage = ketertelusuran asal & perubahan data."
+      "explanation": "Min-max scaling membatasi nilai pada skala [0, 1], sedangkan z-score mengubah data sehingga memiliki rata-rata 0 dan standar deviasi 1."
+    },
+    {
+      "question": "Metode seleksi fitur mana yang menggunakan uji statistik independen dari model pelatihan (seperti Chi-Square atau korelasi)?",
+      "options": [
+        "Wrapper Methods",
+        "Filter Methods",
+        "Embedded Methods",
+        "Deep Learning Methods"
+      ],
+      "answer": 1,
+      "explanation": "Filter methods menyeleksi fitur menggunakan metrik statistik independen tanpa harus melatih model pembelajaran mesin secara berulang."
+    },
+    {
+      "question": "Teknik apa yang digunakan untuk menangani data kelas minoritas yang sangat sedikit pada klasifikasi imbalans dengan cara membuat data sintetis baru?",
+      "options": [
+        "Undersampling acak",
+        "One-Hot Encoding",
+        "SMOTE (Synthetic Minority Over-sampling Technique)",
+        "Label Encoding"
+      ],
+      "answer": 2,
+      "explanation": "SMOTE adalah algoritma oversampling populer yang menciptakan sampel sintetis dari tetangga terdekat kelas minoritas untuk menyeimbangkan dataset."
     }
   ]
 }

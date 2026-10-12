@@ -2,23 +2,23 @@
   {
     "id": "ade-01",
     "number": 1,
-    "title": "Pengantar Rekayasa Data (An Overview of Data Engineering)",
+    "title": "Pengantar Rekayasa Data (Overview of Data Engineering)",
     "status": "available",
-    "summary": "Menjelaskan konsep data, pengolahan data (data processing), dan siklus data (data lifecycle)."
+    "summary": "Definisi data & rekayasa data, DIKW, big data 8V, arsitektur pipeline, peran data engineer, dan 14 aktivitas kunci."
   },
   {
     "id": "ade-02",
     "number": 2,
     "title": "Kategorisasi & Sumarisasi Data (Data Categorization and Summarization)",
     "status": "available",
-    "summary": "Menjelaskan tipe data: nominal, ordinal, interval, rasio; structured, semi-structured, unstructured."
+    "summary": "Kategori struktur data, skala pengukuran (nominal, ordinal, interval, rasio), konteks data, statistik deskriptif, dan agregasi."
   },
   {
     "id": "ade-03",
     "number": 3,
     "title": "Akuisisi & Preparasi Data (Data Acquisition and Preparation)",
     "status": "available",
-    "summary": "Menjelaskan akuisisi, pelabelan (labeling), pemrosesan awal, dan feature engineering."
+    "summary": "Format data terbuka, akuisisi data, infrastruktur anotasi, pembersihan data, transformasi, integrasi, dan rekayasa fitur."
   },
   {
     "id": "ade-04",

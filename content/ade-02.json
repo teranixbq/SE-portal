@@ -3,100 +3,119 @@
   "sessionId": "ade-02",
   "eyebrow": "Modul 02 · M-059",
   "title": "Kategorisasi & Sumarisasi Data (Data Categorization and Summarization)",
-  "lead": "Menjelaskan tipe data: nominal, ordinal, interval, rasio; structured, semi-structured, unstructured. Menganalisis teknik sumarisasi: ukuran pemusatan, penyebaran, dan visualisasi. Memilih visualisasi yang tepat untuk tiap kategori data.",
+  "lead": "Mengkategorikan data berdasarkan struktur, skala pengukuran statistik, serta konten dan konteks. Melakukan sumarisasi numerik, grafis, tabular, dan teknik agregasi data.",
   "sections": [
     {
-      "id": "sec-1",
-      "label": "Data Categorization and Summarization",
-      "title": "1. Kategorisasi Data",
+      "id": "kategori-struktur",
+      "label": "Struktur Data",
+      "title": "1. Kategorisasi Berdasarkan Struktur Data & Dimensi",
       "body": [
-        "Structured (tabel relasional), Semi-structured (JSON, XML, log), Unstructured (teks bebas, citra, audio). Skala ukur Stevens: nominal (kategori tanpa urutan, mis. gender), ordinal (ada urutan, mis. rating), interval (selisih bermakna, nol semu — suhu °C), rasio (nol mutlak — berat, pendapatan)."
+        "Memahami kategori data sangat penting untuk tata kelola (governance), perancangan basis data, integrasi, dan analitik karena menentukan bagaimana data disimpan, diambil, dan diproses secara efisien.",
+        "Kategori berdasarkan struktur: (1) Structured Data — data terorganisir rapi dalam format kaku seperti tabel baris dan kolom RDBMS; (2) Semi-Structured Data — data yang memiliki tag atau penanda hierarkis fleksibel tanpa skema kaku, seperti file JSON, XML, dan log server; (3) Unstructured Data — data tanpa skema terdefinisi seperti teks bebas dokumen, citra, audio, dan video.",
+        "Dalam data tabular, kolom disebut sebagai Features (variabel atau atribut), sedangkan baris merepresentasikan Data Points (observasi individual). Konsep Dimensionality (dimensi data) didefinisikan dari total banyaknya fitur yang dimiliki suatu dataset."
       ],
-      "callout": "Bahan Bacaan: Han et al. (2022) Ch.2 Getting to Know Your Data; Leskovec et al. (2020) Ch.1"
+      "callout": "Tantangan dimensi: Semakin banyak fitur, semakin tinggi risiko curse of dimensionality yang dapat memperlambat kueri dan menurunkan performa analitik."
     },
     {
-      "id": "sec-2",
-      "label": "Data Categorization and Summarization",
-      "title": "2. Sumarisasi Numerik",
+      "id": "skala-pengukuran",
+      "label": "Skala Statistik",
+      "title": "2. Skala Pengukuran: Kualitatif vs Kuantitatif",
       "body": [
-        "Pemusatan: mean, median, modus. Penyebaran: range, varians, std-dev, IQR, persentil. Aturan praktis: data skew → pakai median + IQR, bukan mean + std. Laporkan n (jumlah) + missing rate selalu."
+        "Data dikelompokkan berdasarkan skala pengukuran statistik menurut hierarki Stevens:",
+        "Data Kategorikal (Kualitatif): (1) Skala Nominal — label atau nama tanpa urutan inheren (contoh: jenis kelamin, warna produk, status perkawinan). Operasi statistik yang diizinkan terbatas pada Modus dan persentil frekuensi. (2) Skala Ordinal — kategori yang memiliki urutan logis namun tanpa interval terukur yang konstan (contoh: peringkat 'rendah, sedang, tinggi', tingkat kepuasan, rating bintang). Operasi yang diizinkan meliputi Median dan persentil.",
+        "Data Numerik (Kuantitatif): (1) Skala Interval — data numerik dengan interval antarnilai yang sama, namun TIDAK memiliki nilai nol mutlak (true zero) (contoh: suhu dalam Celsius atau Fahrenheit; 0°C bukan ketiadaan suhu). Operasi yang diizinkan meliputi aritmatika penjumlahan/pengurangan, Mean, dan Standar Deviasi. (2) Skala Rasio — data numerik dengan nilai nol sejati (true zero point) sehingga rasio perbandingan bermakna penuh (contoh: tinggi, berat, pendapatan, usia, kuantitas order). Seluruh operasi aritmatika dan rasio perkalian/pembagian valid."
       ],
-      "callout": ""
+      "callout": "Aturan praktis: Nominal (kategori tanpa urutan) → Ordinal (berurutan) → Interval (selisih bermakna, nol semu) → Rasio (nol mutlak, perbandingan rasio valid)."
     },
     {
-      "id": "sec-3",
-      "label": "Data Categorization and Summarization",
-      "title": "3. Sumarisasi Grafis",
+      "id": "konten-konteks",
+      "label": "Konten & Konteks",
+      "title": "3. Kategori Berdasarkan Konten: Metadata, Master, Transaksional & Analitikal",
       "body": [
-        "Distribusi 1 variabel: histogram, boxplot, bar chart. Hubungan 2 variabel: scatter plot (numerik-numerik), grouped bar / boxplot per kategori. Komposisi: pie hanya untuk ≤5 kategori, selebihnya bar horizontal. Tren waktu: line chart."
+        "Metadata vs Content Data: Metadata adalah 'data tentang data' yang mendeskripsikan atribut aset data (contoh: ukuran file, tanggal pembuatan, skema tabel, pemilik data, izin akses). Content data adalah substansi isi informasi itu sendiri (misalnya isi teks dokumen, angka transaksi, atau piksel citra).",
+        "Klasifikasi data operasional organisasi: (1) Master Data — data entitas inti yang bersifat esensial dan konsisten lintas sistem operasional (contoh: data pelanggan, data produk, data mahasiswa, bagan akun); (2) Transactional Data — data yang tercipta dari aktivitas operasional transaksi harian (contoh: transaksi penjualan kasir, transfer perbankan, invoice); (3) Analytical Data — data historis dan ringkasan yang diturunkan dari data transaksional untuk keperluan laporan, evaluasi performa, dan pengambilan keputusan bisnis (BI dan data warehouse)."
       ],
-      "callout": "Istilah Kunci: Nominal/Ordinal/Interval/Rasio, Mean vs Median, IQR, Histogram vs Bar chart"
+      "callout": "Pengelolaan Master Data (Master Data Management / MDM) yang andal mencegah duplikasi dan inkonsistensi entitas pada seluruh pipeline organisasi."
     },
     {
-      "id": "code-snippet",
-      "label": "Implementasi Praktis",
-      "title": "Contoh Kode & Query",
+      "id": "sumarisasi-deskriptif",
+      "label": "Sumarisasi Numerik",
+      "title": "4. Sumarisasi Statistik Deskriptif & Agregasi Data",
       "body": [
-        "Berikut adalah contoh kode atau kueri terkait topik modul ini:"
+        "Sumarisasi data bertujuan memadatkan dataset besar dan kompleks ke dalam wujud ringkas yang menonjolkan karakteristik serta pola utama tanpa kehilangan esensi informasi.",
+        "Ukuran Pemusatan (Central Tendency): Mean (rata-rata aritmatika), Median (nilai tengah pemisah 50% data atas dan bawah), dan Mode (nilai dengan kemunculan terbanyak). Bila data miring (skewed) atau memiliki outlier ekstrem, gunakan Median sebagai tolok ukur yang lebih stabil dibanding Mean.",
+        "Ukuran Penyebaran (Variability): Range (jangkauan nilai maks - min), Varians, Standar Deviasi (penyimpangan rata-rata dari mean), dan Interquartile Range (IQR = Q3 - Q1) yang mengukur sebaran 50% data tengah.",
+        "Persentil dan Kuartil: Membagi data terurut menjadi persentase tertentu (Kuartil membagi menjadi 4 bagian: Q1 25%, Q2 50%/median, Q3 75%) untuk mengevaluasi sebaran dan batas outlier.",
+        "Teknik Agregasi Data: Meliputi Grouping Operations (operasi 'GROUP BY' dalam SQL dan pandas untuk menghitung metrik per kategori) dan Time Series Summaries (analisis deret waktu menggunakan moving average, cumulative sum, dan seasonal decomposition)."
       ],
-      "callout": "<pre style=\"margin:0;overflow-x:auto;font-family:monospace;font-size:13px;line-height:1.5;\"><code>-- Ringkasan statistik per kategori (contoh e-commerce)\nSELECT category,\n  COUNT(*) AS n,\n  AVG(price) AS mean_price,\n  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY price) AS median_price,\n  STDDEV(price) AS sd_price\nFROM products GROUP BY category;</code></pre>"
+      "callout": "Rumus Pagar Outlier Tukey: Q1 - 1.5 * IQR (batas bawah) dan Q3 + 1.5 * IQR (batas atas). Nilai di luar rentang ini dianggap sebagai pencilan (outlier)."
+    },
+    {
+      "id": "metode-grafis-tabular",
+      "label": "Grafis & Tabular",
+      "title": "5. Metode Grafis dan Tabular dalam Sumarisasi",
+      "body": [
+        "Metode Visualisasi Grafis: (1) Histogram — menyajikan distribusi frekuensi data numerik ke dalam kelompok bin berkelanjutan; (2) Box Plot (Box-and-Whisker) — merangkum nilai minimum, Q1, median, Q3, maksimum, dan titik-titik pencilan (outlier) untuk mendeteksi kemiringan distribusi; (3) Scatter Plot — menampilkan relasi dan pola korelasi antara dua variabel numerik; (4) Bar Chart — ideal untuk membandingkan frekuensi atau total per kategori diskrit; (5) Pie Chart — hanya cocok untuk menggambarkan proporsi bagian dari keseluruhan dengan sedikit kategori (≤ 5 kategori).",
+        "Metode Ringkasan Tabular: (1) Frequency Tables — menyajikan daftar frekuensi kemunculan tiap kategori data secara langsung; (2) Pivot Tables — memungkinkan agregasi data multidimensi lintas kategori dan waktu (seperti merangkum total penjualan berdasarkan wilayah dan kategori produk secara simultan)."
+      ],
+      "callout": "Panduan memilih visualisasi: Distribusi 1 variabel numerik → Histogram/Boxplot; Relasi 2 variabel numerik → Scatter plot; Kategori diskrit → Bar chart."
     }
   ],
   "quiz": [
     {
-      "question": "Suhu 25°C adalah skala…",
+      "question": "Suhu tubuh sebesar 37°C termasuk ke dalam skala pengukuran statistik apa?",
       "options": [
-        "Nominal",
-        "Ordinal",
-        "Interval",
-        "Rasio"
+        "Skala Nominal",
+        "Skala Ordinal",
+        "Skala Interval",
+        "Skala Rasio"
       ],
       "answer": 2,
-      "explanation": "Interval: selisih bermakna, nol tidak mutlak (0°C ≠ tidak ada suhu)."
+      "explanation": "Suhu Celsius termasuk skala Interval karena memiliki interval terukur yang sama, tetapi tidak memiliki nilai nol mutlak (0°C bukan berarti tidak ada suhu sama sekali)."
     },
     {
-      "question": "Data paling tepat dilaporkan dengan median + IQR ketika…",
+      "question": "Mengapa Median lebih disarankan dibanding Mean saat menyajikan ringkasan data yang memiliki outlier ekstrem?",
       "options": [
-        "Distribusi normal",
-        "Distribusi skew / ada outlier",
-        "Data kategorikal",
-        "n sangat kecil"
+        "Karena Median selalu menghasilkan angka bulat",
+        "Karena Median tidak terpengaruh oleh nilai ekstrem yang sangat besar atau kecil (robust)",
+        "Karena Mean membutuhkan komputasi yang dilarang pada Big Data",
+        "Karena rumus Median hanya berlaku untuk data kategorikal"
       ],
       "answer": 1,
-      "explanation": "Mean sensitif terhadap outlier; median robust."
+      "explanation": "Median adalah ukuran pemusatan yang tahan (robust) terhadap pencilan (outlier) dan distribusi data yang condong (skewed), sedangkan Mean sangat sensitif terhadap nilai ekstrem."
     },
     {
-      "question": "Visualisasi terbaik untuk distribusi 1 variabel numerik…",
+      "question": "Data pelanggan seperti Nama, NIK, dan Alamat yang menjadi entitas inti bisnis dan jarang berubah diklasifikasikan sebagai…",
       "options": [
-        "Pie chart",
-        "Histogram / boxplot",
-        "Line chart ganda",
-        "Word cloud"
+        "Transactional Data",
+        "Master Data",
+        "Analytical Data",
+        "Metadata saja"
       ],
       "answer": 1,
-      "explanation": "Histogram menunjukkan bentuk distribusi; boxplot menunjukkan kuartil & outlier."
+      "explanation": "Master Data adalah data entitas inti organisasi (pelanggan, produk, pemasok) yang bersifat esensial bagi operasi harian dan menjadi acuan bersama antarsistem."
     },
     {
-      "question": "File JSON termasuk data…",
+      "question": "Visualisasi grafik mana yang paling efektif untuk melihat korelasi antara dua variabel numerik?",
       "options": [
-        "Structured",
-        "Semi-structured",
-        "Unstructured",
-        "Tidak ada"
+        "Pie Chart",
+        "Histogram",
+        "Scatter Plot",
+        "Frequency Table"
       ],
-      "answer": 1,
-      "explanation": "Punya struktur (key-value) tapi fleksibel/tanpa skema kaku."
+      "answer": 2,
+      "explanation": "Scatter Plot memetakan titik-titik data pada sumbu X dan Y, sehingga hubungan korelasi, tren, dan sebaran bivariat terlihat secara visual."
     },
     {
-      "question": "Untuk melihat hubungan 2 variabel numerik gunakan…",
+      "question": "Kapan penggunaan Pie Chart dianggap kurang tepat dalam penyajian data?",
       "options": [
-        "Bar chart",
-        "Scatter plot",
-        "Pie chart",
-        "Tabel frekuensi"
+        "Ketika kategori data berjumlah banyak (> 5) dan proporsinya hampir seragam",
+        "Ketika data hanya terdiri dari dua kategori",
+        "Ketika data merepresentasikan persentase total 100%",
+        "Ketika ingin membandingkan nilai pria vs wanita"
       ],
-      "answer": 1,
-      "explanation": "Scatter plot memperlihatkan korelasi & outlier bivariat."
+      "answer": 0,
+      "explanation": "Pie chart sulit dibaca manusia jika memiliki banyak kategori kecil atau perbedaan sudut irisan sangat tipis; untuk kondisi tersebut Bar Chart jauh lebih unggul."
     }
   ]
 }
