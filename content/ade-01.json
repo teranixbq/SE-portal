@@ -9,6 +9,10 @@
       "id": "definisi",
       "label": "Definisi & Fondasi",
       "title": "1. Apa itu Data dan Rekayasa Data (Data Engineering)?",
+      "image": {
+        "src": "assets/images/ade/p1-dikw.jpg",
+        "caption": "Piramida DIKW: Dari data mentah tanpa konteks menuju kebijakan (wisdom) melalui pemrosesan dan pemahaman."
+      },
       "body": [
         "Data didefinisikan sebagai representasi fakta, konsep, atau instruksi dalam bentuk terformalisasi yang cocok untuk komunikasi, interpretasi, atau pemrosesan oleh manusia maupun sistem otomatis (Hicks 1993, dikutip oleh Checkland dan Holwell 1998). DAMA (2021) menambahkan bahwa data adalah fakta individual yang disajikan dalam bentuk teks, angka, grafik, citra, audio, atau video yang berada di luar konteks dan belum memiliki makna inheren.",
         "Data Engineering adalah subdisiplin rekayasa perangkat lunak (software engineering) yang berfokus pada transportasi, transformasi, dan pengelolaan data. Jika IEEE mendefinisikan rekayasa perangkat lunak sebagai penerapan pendekatan yang sistematis, berdisiplin, dan terukur terhadap pengembangan, pengoperasian, dan pemeliharaan perangkat lunak, maka rekayasa data adalah penerapan prinsip perangkat lunak tersebut khusus untuk menangani pergerakan dan tata kelola data."
@@ -19,6 +23,10 @@
       "id": "ekonomi-data",
       "label": "Ekonomi Informasi",
       "title": "2. Data as the New Oil & Penggerak Ekonomi Digital",
+      "image": {
+        "src": "assets/images/ade/p1-data-never-sleeps.jpg",
+        "caption": "Infografis Data Never Sleeps: Skala masif data yang diproduksi setiap menit di era ekonomi digital."
+      },
       "body": [
         "Minyak bumi menggerakkan ekonomi industri masa lalu dan bersifat terbatas (finite). Sebaliknya, data menggerakkan ekonomi informasi modern: jumlah pengetahuan yang diperoleh berbanding lurus dengan data yang dimiliki, di mana ekstraksi informasi membutuhkan pengumpulan, pemrosesan, dan analisis yang berkelanjutan.",
         "Studi kasus implementasi industri: Amazon merevolusi e-commerce melalui rekomendasi terpersonalisasi, anticipatory shipping, dan dynamic pricing. Netflix beralih dari rental DVD ke layanan streaming berbasis Big Data (termasuk sayembara algoritma $1 Juta USD pada 2006-2009). Platform media sosial seperti Facebook memanfaatkan pelacakan perilaku pengguna secara real-time untuk penargetan iklan presisi."
@@ -29,6 +37,10 @@
       "id": "karakteristik-big-data",
       "label": "Karakteristik Data",
       "title": "3. Karakteristik Big Data: The 8 V's & Tantangan Rekayasa",
+      "image": {
+        "src": "assets/images/ade/p1-big-data-8v.jpg",
+        "caption": "Karakteristik Big Data (The 8 V's): Dimensi tantangan volume, kecepatan, keberagaman, dan keamanan data."
+      },
       "body": [
         "Karakteristik Big Data dirangkum ke dalam 8V: Volume (besaran data sesuai kebutuhan), Velocity (kecepatan data masuk), Variety (sumber data heterogen), Variability (variasi laju data seiring waktu), Veracity (akurasi dan kebenaran data), Value (nilai bisnis saat data paling dibutuhkan), Visualization (kemampuan disajikan dalam format yang dipahami), dan Vulnerability (keamanan dan kerentanan data).",
         "Tantangan rekayasa pada Big Data meliputi: bagaimana mengakumulasi data dari beragam sumber berbeda, menyimpan dan memindahkan data raksasa dengan cepat, menangani data tidak terstruktur (unstructured data), menyaring data yang relevan, serta menjamin pencegahan kehilangan data (zero data loss)."
@@ -39,6 +51,10 @@
       "id": "peran-profesi",
       "label": "Ekosistem Peran",
       "title": "4. Data Engineer vs Data Scientist vs Machine Learning Engineer",
+      "image": {
+        "src": "assets/images/ade/p1-roles.jpg",
+        "caption": "Perbandingan Peran: Kolaborasi Data Engineer, Data Scientist, dan Machine Learning Engineer."
+      },
       "body": [
         "Sebagian besar Data Scientist menghabiskan hingga 80% waktunya untuk aktivitas data engineering jika fondasi sistem belum matang. Pembagian peran spesifik dalam organisasi modern:",
         "Data Engineer: Membangun dan mengoptimalkan sistem serta pipeline penanganan data bervolume besar, serta memastikan data bersih dan berkualitas tinggi siap diakses pemangku kepentingan.",
@@ -51,6 +67,10 @@
       "id": "aktivitas-rekayasa",
       "label": "Aktivitas Inti",
       "title": "5. Spektrum Aktivitas Rekayasa Data Modern",
+      "image": {
+        "src": "assets/images/ade/p1-pipeline.jpg",
+        "caption": "Arsitektur Data Pipeline: Dari sumber data terdistribusi menuju analytics-ready data mart dan warehouse."
+      },
       "body": [
         "Aktivitas kunci data engineer mencakup: (1) Ingestion & Extraction dari basis data transaksi, API, sensor IoT, dan web scraping; (2) Data Integration & Loading ke data warehouse atau data lake; (3) Processing Pipeline untuk streaming real-time maupun batch terjadwal; (4) Data Storage architecture (Data Lake untuk mentah/unstructured, Data Warehouse untuk terstruktur); (5) Scalable Architecture secara horizontal dan vertikal di cloud atau on-premise; (6) Parallel Processing dengan Apache Hadoop dan Spark; (7) Transformation & Data Validation untuk membersihkan duplikat, outlier, dan missing values.",
         "Selain infrastruktur dasar, data engineer bertanggung jawab atas: (8) Data Catalog & Metadata untuk melacak inventaris aset dan silsilah data (lineage); (9) Monitoring & Logging dengan mekanisme failover dan retry; (10) Performance Optimization melalui indexing, partisi, dan alokasi resource; (11) Data Sharing & Security dengan enkripsi dan Privacy Enhancing Technologies; (12) Compliance & Governance terhadap regulasi perlindungan data seperti GDPR, HIPAA, dan UU PDP No. 27/2022; serta (13) Workflow Orchestration menggunakan alat seperti Apache Airflow."

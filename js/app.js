@@ -67,6 +67,168 @@ function diagram(id) {
   if (id === 'validasi') return `<div class="diagram"><div class="diagram-title">Foto 1 · hold-out vs 10-fold cross-validation</div><div class="visual-note"><img src="assets/images/cross-validation.jpeg" alt="Catatan dosen tentang cross-validation"><p>Catatan asli: 1.000 baris dibagi untuk training, testing, lalu validasi bergilir.</p></div><div class="split-animation"><div class="split-label">1.000 rows</div><div class="split-bar"><i class="train-part">80% training</i><i class="test-part">20% testing</i></div><div class="split-caption">hold-out split · satu pembagian untuk menguji generalisasi</div></div><div class="diagram-title fold-title">lalu validasi bergilir</div><div class="folds">${Array.from({length:10}, (_, i) => `<i style="animation-delay:${i * 80}ms"></i>`).join('')}</div><div class="fold-note"><span>90% training</span><span>10% validation berpindah setiap putaran</span></div><div class="flow" style="margin-top:20px"><span>10 putaran</span><b>→</b><span>10 skor validasi</span><b>→</b><span>rata-rata</span></div></div>`;
   if (id === 'pipeline') return `<div class="diagram"><div class="diagram-title">Foto 2 · model masuk ke aplikasi</div><div class="visual-note"><img src="assets/images/ml-pipeline.jpeg" alt="Catatan dosen tentang machine learning pipeline"><p>Catatan asli: model dievaluasi, disimpan, lalu dihubungkan ke aplikasi.</p></div><div class="pipeline-animation"><span class="pipeline-node">Dataset</span><b>→</b><span class="pipeline-node">Train</span><b>→</b><span class="pipeline-node">Model</span><b>→</b><span class="pipeline-node">Evaluate</span><b>→</b><span class="pipeline-node">Application</span></div><div class="inference-line"><i></i><span>unseen data masuk</span><b>→</b><strong>prediksi</strong></div></div>`;
   if (id === 'sdlc') return `<div class="diagram"><div class="diagram-title">siklus pengembangan</div><div class="flow"><span>Plan</span><b>→</b><span>Analyze</span><b>→</b><span>Design</span><b>→</b><span>Build</span><b>→</b><span>Test</span><b>→</b><span>Maintain</span></div></div>`;
+  
+  if (id === 'definisi') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Hierarki Interaktif · Piramida DIKW</div>
+    <div class="dikw-container">
+      <div class="dikw-level l4"><span class="dikw-name">WISDOM (Kebijaksanaan)</span><small>Pengambilan keputusan beretika & dampak nyata</small></div>
+      <div class="dikw-level l3"><span class="dikw-name">KNOWLEDGE (Pengetahuan)</span><small>Sintesis pemahaman pola, konteks 'mengapa' & 'bagaimana'</small></div>
+      <div class="dikw-level l2"><span class="dikw-name">INFORMATION (Informasi)</span><small>Data terstruktur, teragregasi & bermakna</small></div>
+      <div class="dikw-level l1"><span class="dikw-name">DATA (Fakta Mentah)</span><small>Fakta mentah tanpa konteks (angka, teks, sinyal biner)</small></div>
+    </div>
+  </div>`;
+
+  if (id === 'karakteristik-big-data') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Karakteristik Big Data · The 8 V's Matrix</div>
+    <div class="v8-matrix">
+      <div class="v8-item"><b class="v-num">V1</b><strong>Volume</strong><span>Skala terabyte hingga petabyte</span></div>
+      <div class="v8-item"><b class="v-num">V2</b><strong>Velocity</strong><span>Laju aliran stream real-time</span></div>
+      <div class="v8-item"><b class="v-num">V3</b><strong>Variety</strong><span>Struktur data heterogen</span></div>
+      <div class="v8-item"><b class="v-num">V4</b><strong>Variability</strong><span>Variasi laju data seiring waktu</span></div>
+      <div class="v8-item"><b class="v-num">V5</b><strong>Veracity</strong><span>Kebenaran & integritas data</span></div>
+      <div class="v8-item"><b class="v-num">V6</b><strong>Value</strong><span>Nilai strategis bagi bisnis</span></div>
+      <div class="v8-item"><b class="v-num">V7</b><strong>Visualization</strong><span>Kemampuan disajikan visual</span></div>
+      <div class="v8-item"><b class="v-num">V8</b><strong>Vulnerability</strong><span>Keamanan, privasi & audit</span></div>
+    </div>
+  </div>`;
+
+  if (id === 'peran-profesi') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Matriks Kolaborasi Peran Data</div>
+    <div class="roles-matrix">
+      <div class="role-box de">
+        <span class="role-badge">Data Engineer</span>
+        <p class="role-focus">Fokus: <b>Pipeline & Fondasi</b></p>
+        <div class="role-bar"><i style="width:80%">80% waktu preparasi data</i></div>
+        <p class="role-detail">Membangun arsitektur terdistribusi, ingest multi-source, data warehouse & orkestrasi Airflow.</p>
+      </div>
+      <div class="role-box ds">
+        <span class="role-badge">Data Scientist</span>
+        <p class="role-focus">Fokus: <b>Model & Pola Bisnis</b></p>
+        <div class="role-bar"><i style="width:20%">20% pemodelan</i></div>
+        <p class="role-detail">Eksplorasi data, uji hipotesis, dan membangun algoritma prediksi ML.</p>
+      </div>
+      <div class="role-box mle">
+        <span class="role-badge">ML Engineer</span>
+        <p class="role-focus">Fokus: <b>Produksi & Deploy</b></p>
+        <div class="role-bar"><i style="width:100%">100% integrasi sistem</i></div>
+        <p class="role-detail">Membawa model ke production, otomatisasi retraining, batch scoring & low-latency API.</p>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'aktivitas-rekayasa') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Animasi Alur Pipeline Rekayasa Data</div>
+    <div class="pipeline-animated-flow">
+      <div class="pipe-step"><span class="pipe-icon">📥</span><b>Ingestion</b><small>API, IoT, CDC</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">💾</span><b>Raw Lake</b><small>Bronze S3 / Parquet</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">⚡</span><b>Transform</b><small>Spark / dbt / Clean</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">🏛</span><b>Warehouse</b><small>Gold Star Schema</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">📊</span><b>Serving</b><small>BI, ML & Analytics</small></div>
+    </div>
+    <div class="pipeline-pulse-track"><div class="pulse-packet"></div></div>
+  </div>`;
+
+  if (id === 'skala-pengukuran') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Hierarki Skala Pengukuran Statistik (Stevens)</div>
+    <div class="scale-visual-grid">
+      <div class="scale-card">
+        <span class="scale-tag nominal">Nominal</span>
+        <b>Kategori Tanpa Urutan</b>
+        <p>Gender, Warna, Agama</p>
+        <small>Operasi: Modus, Frekuensi</small>
+      </div>
+      <div class="scale-card">
+        <span class="scale-tag ordinal">Ordinal</span>
+        <b>Kategori Berurutan</b>
+        <p>Rating, Rendah/Sedang/Tinggi</p>
+        <small>Operasi: Median, Persentil</small>
+      </div>
+      <div class="scale-card">
+        <span class="scale-tag interval">Interval</span>
+        <b>Selisih Sama, Nol Semu</b>
+        <p>Suhu (°C, °F), Tahun</p>
+        <small>Operasi: Mean, Standar Deviasi</small>
+      </div>
+      <div class="scale-card">
+        <span class="scale-tag ratio">Rasio</span>
+        <b>Nol Mutlak, Rasio Valid</b>
+        <p>Pendapatan, Berat, Usia</p>
+        <small>Operasi: Seluruh Aritmatika & Rasio</small>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'sumarisasi-deskriptif') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Diagram Interaktif · Anatomi Box Plot & Deteksi Outlier</div>
+    <div class="boxplot-graphic">
+      <div class="bp-track">
+        <div class="bp-whisker left"><span>Min (Q1 - 1.5·IQR)</span></div>
+        <div class="bp-box">
+          <div class="bp-part q1"><b>Q1</b><small>25%</small></div>
+          <div class="bp-median"><b>Median (Q2)</b><small>50%</small></div>
+          <div class="bp-part q3"><b>Q3</b><small>75%</small></div>
+        </div>
+        <div class="bp-whisker right"><span>Maks (Q3 + 1.5·IQR)</span></div>
+        <div class="bp-outlier"><i></i><span>Outlier</span></div>
+      </div>
+      <div class="bp-iqr-label">◄────────── Rentang Antarkuartil (IQR = Q3 - Q1) ──────────►</div>
+    </div>
+  </div>`;
+
+  if (id === 'format-data') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Standar Format Terbuka (FAIR) vs Proprietary</div>
+    <div class="format-compare-grid">
+      <div class="format-col rec">
+        <div class="fmt-head">✓ Direkomendasikan (Terbuka)</div>
+        <ul>
+          <li><b>Teks:</b> .txt, .pdf (PDF/A), .odt</li>
+          <li><b>Tabel:</b> .csv, .ods</li>
+          <li><b>Database:</b> .sql dump, .csv</li>
+          <li><b>Spasial:</b> .json (GeoJSON)</li>
+          <li><b>Citra:</b> .png, .jpg, .svg, .tiff</li>
+        </ul>
+      </div>
+      <div class="format-col not-rec">
+        <div class="fmt-head">✕ Tidak Direkomendasikan (Tertutup)</div>
+        <ul>
+          <li><b>Teks:</b> .doc, .docx, .rtf</li>
+          <li><b>Tabel:</b> .xls, .xlsx, .pdf (tabel)</li>
+          <li><b>Database:</b> .mdb (MS Access)</li>
+          <li><b>Spasial:</b> .shp, .gdb (Esri)</li>
+          <li><b>Citra:</b> .ai, .cdr, .wmf</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'anotasi-labeling') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Demonstrasi Anotasi Data untuk Supervised Learning</div>
+    <div class="annotation-demo-grid">
+      <div class="anno-card">
+        <b>1. Named Entity Recognition (NER)</b>
+        <div class="ner-box">
+          <span>Kunjungan ke</span>
+          <mark class="tag-loc">Jakarta<small>LOC</small></mark>
+          <span>oleh</span>
+          <mark class="tag-per">Budi Santoso<small>PER</small></mark>
+          <span>pada</span>
+          <mark class="tag-date">12 Mei 2025<small>DATE</small></mark>
+        </div>
+      </div>
+      <div class="anno-card">
+        <b>2. Object Detection (Bounding Box)</b>
+        <div class="bbox-demo">
+          <div class="bbox-box b1"><span>Car: 0.94</span></div>
+          <div class="bbox-box b2"><span>Pedestrian: 0.88</span></div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
   return '';
 }
 
@@ -384,6 +546,12 @@ async function sessionPage() {
                 ${sec.body.map(p => `<p>${p}</p>`).join('')}
               </div>
               ${sec.callout ? `<div class="callout"><span class="callout-symbol">💡</span><div class="callout-text">${sec.callout}</div></div>` : ''}
+              ${sec.image ? `
+                <figure class="doc-media">
+                  <img src="${sec.image.src}" alt="${sec.image.caption || ''}" loading="lazy">
+                  <figcaption><span class="media-icon">🖼</span> ${sec.image.caption || ''}</figcaption>
+                </figure>
+              ` : ''}
               ${diagram(sec.id)}
             </section>
           `).join('')}

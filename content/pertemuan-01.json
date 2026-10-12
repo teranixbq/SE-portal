@@ -19,6 +19,10 @@
       "id": "paradigma",
       "label": "Evolusi Arsitektur",
       "title": "Dari RDBMS Klasik ke Pendekatan Multi-Model",
+      "image": {
+        "src": "assets/images/se4ds/se4ds-01-paradigm.jpg",
+        "caption": "Evolusi Arsitektur: Menempatkan data primer pada pusat aplikasi dengan basis data multi-model."
+      },
       "body": [
         "Selama empat dekade, perangkat lunak terbiasa menempatkan seluruh data ke dalam RDBMS terpusat. Namun saat ini, volume data yang eksponensial dan keberagaman tipe data (dokumen JSON, time-series, grafik) menuntut fleksibilitas baru.",
         "Sistem modern memperlakukan data sebagai entitas utama: pertukaran dokumen antarsistem, event streaming, dan database multi-model mempercepat siklus antara spesifikasi fitur hingga deployment ke production."

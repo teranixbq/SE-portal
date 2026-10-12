@@ -9,6 +9,10 @@
       "id": "format-data",
       "label": "Standar Format",
       "title": "1. Rekomendasi Format Data Terbuka vs Format Proprietary",
+      "image": {
+        "src": "assets/images/ade/p3-formats.jpg",
+        "caption": "Tabel Rekomendasi Format: Perbandingan format data terbuka yang direkomendasikan vs format proprietary yang tidak direkomendasikan."
+      },
       "body": [
         "Pemilihan format data menentukan keberlanjutan arsip, portabilitas, dan kemudahan pemrosesan pada pipeline data:",
         "Dokumen Teks: Format yang direkomendasikan adalah Unicode text (.txt), PDF/A (.pdf), dan OpenDocument Text (.odt). Format seperti Microsoft Word (.doc, .docx) dan Rich Text (.rtf) tidak direkomendasikan karena bersifat proprietary dan bergantung pada lisensi vendor.",
@@ -23,6 +27,10 @@
       "id": "metode-akuisisi",
       "label": "Metode Akuisisi",
       "title": "2. Konsep Akuisisi Data & Elisitasi Kebutuhan",
+      "image": {
+        "src": "assets/images/ade/p3-requirements.jpg",
+        "caption": "Tahapan Kebutuhan Data: Dari identifikasi pemangku kepentingan hingga Source-to-Target mapping."
+      },
       "body": [
         "Definisi Akuisisi Data: Proses atau kegiatan mengamati fenomena alam, sosial, atau teknis secara langsung maupun tidak langsung menggunakan peralatan/instrumen tertentu untuk menghasilkan data yang dapat diproses komputer demi menjawab pertanyaan tertentu.",
         "Aktivitas yang BUKAN Akuisisi Data: (1) Mengunduh dataset publik dari repositori internet; (2) Membeli dataset teknis dari data provider; (3) Meminta data yang dibagikan oleh rekan kerja; (4) Mengumpulkan data acak dari situs web tanpa instrumen observasi terkalibrasi.",
@@ -35,6 +43,10 @@
       "id": "anotasi-labeling",
       "label": "Anotasi Data",
       "title": "3. Infrastruktur Anotasi dan Pelabelan untuk Pembelajaran Mesin",
+      "image": {
+        "src": "assets/images/ade/p3-object-detection.jpg",
+        "caption": "Anotasi Object Detection: Pelabelan bounding box untuk melatih model supervised learning."
+      },
       "body": [
         "Model Supervised Learning memerlukan data berlabel (annotated/labeled data) agar dapat dilatih. Meskipun pelabelan data biasanya dikerjakan oleh pakar domain (domain experts/annotators), data engineer bertanggung jawab membangun sistem dan infrastruktur yang memfasilitasi proses pelabelan tersebut.",
         "Bentuk-bentuk anotasi populer meliputi: (1) Object Detection — pembuatan bounding box pada citra objek; (2) Named Entity Recognition (NER) — pelabelan entitas bernama pada teks kalimat (seperti nama orang, institusi, lokasi, atau tanggal); (3) Structure Tagging — penandaan hierarki struktur dan relasi pada dokumen semi-terstruktur.",
@@ -46,6 +58,10 @@
       "id": "preprocessing-cleaning",
       "label": "Pembersihan Data",
       "title": "4. Preprocessing: Pembersihan, Transformasi, Integrasi & Resampling",
+      "image": {
+        "src": "assets/images/ade/p3-preprocessing.jpg",
+        "caption": "Siklus Preprocessing Data: Tahapan sistematis dari data mentah hingga dataset terstruktur siap model."
+      },
       "body": [
         "Pembersihan Data (Data Cleaning): (1) Penanganan Nilai Hilang (Missing Values) melalui penghapusan (deletion baris/kolom) atau imputasi nilai pengganti (mean, median, mode, atau KNN imputation); (2) Penghapusan Duplikat untuk menjaga keunikan rekaman; (3) Deteksi & Penanganan Outlier menggunakan z-score atau rentang IQR, dengan keputusan pemangkasan (capping), transformasi log, atau investigasi; (4) Reduksi Noise melalui teknik binning, regresi, atau clustering.",
         "Transformasi Data: Konversi satuan agar konsisten, Normalisasi min-max untuk memetakan nilai ke rentang [0, 1], Standardisasi z-score untuk menghasilkan nilai berpusat pada mean 0 dan standar deviasi 1, transformasi logaritmik untuk mereduksi kemiringan distribusi, serta diskretisasi/binning variabel kontinu menjadi kategori berbasis equal-width atau equal-frequency.",
@@ -57,6 +73,10 @@
       "id": "feature-engineering",
       "label": "Rekayasa Fitur",
       "title": "5. Feature Engineering: Encoding, Creation, Extraction & Selection",
+      "image": {
+        "src": "assets/images/ade/p3-feature-eng.jpg",
+        "caption": "Alur Feature Engineering: Transformasi representasi fitur untuk memaksimalkan akurasi model ML."
+      },
       "body": [
         "Feature engineering adalah proses mentransformasikan data mentah menjadi fitur representatif yang meningkatkan performa model pembelajaran mesin.",
         "Categorical Encoding: One-Hot Encoding (mengubah kategori menjadi vektor biner terpisah), Label Encoding (mengubah kategori menjadi angka integer berurutan), serta Frequency atau Target Encoding (menggantikan kategori dengan statistik agregat target).",

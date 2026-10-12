@@ -9,6 +9,10 @@
       "id": "kategori-struktur",
       "label": "Struktur Data",
       "title": "1. Kategorisasi Berdasarkan Struktur Data & Dimensi",
+      "image": {
+        "src": "assets/images/ade/p2-structure.jpg",
+        "caption": "Kategorisasi Struktur: Data terstruktur (tabel), semi-terstruktur (JSON/XML), dan tidak terstruktur (teks/media)."
+      },
       "body": [
         "Memahami kategori data sangat penting untuk tata kelola (governance), perancangan basis data, integrasi, dan analitik karena menentukan bagaimana data disimpan, diambil, dan diproses secara efisien.",
         "Kategori berdasarkan struktur: (1) Structured Data — data terorganisir rapi dalam format kaku seperti tabel baris dan kolom RDBMS; (2) Semi-Structured Data — data yang memiliki tag atau penanda hierarkis fleksibel tanpa skema kaku, seperti file JSON, XML, dan log server; (3) Unstructured Data — data tanpa skema terdefinisi seperti teks bebas dokumen, citra, audio, dan video.",
@@ -20,6 +24,10 @@
       "id": "skala-pengukuran",
       "label": "Skala Statistik",
       "title": "2. Skala Pengukuran: Kualitatif vs Kuantitatif",
+      "image": {
+        "src": "assets/images/ade/p2-scales.jpg",
+        "caption": "Tabel Skala Pengukuran: Perbedaan karakteristik, operasi valid, dan contoh skala Interval, Rasio, Ordinal, dan Nominal."
+      },
       "body": [
         "Data dikelompokkan berdasarkan skala pengukuran statistik menurut hierarki Stevens:",
         "Data Kategorikal (Kualitatif): (1) Skala Nominal — label atau nama tanpa urutan inheren (contoh: jenis kelamin, warna produk, status perkawinan). Operasi statistik yang diizinkan terbatas pada Modus dan persentil frekuensi. (2) Skala Ordinal — kategori yang memiliki urutan logis namun tanpa interval terukur yang konstan (contoh: peringkat 'rendah, sedang, tinggi', tingkat kepuasan, rating bintang). Operasi yang diizinkan meliputi Median dan persentil.",
@@ -31,6 +39,10 @@
       "id": "konten-konteks",
       "label": "Konten & Konteks",
       "title": "3. Kategori Berdasarkan Konten: Metadata, Master, Transaksional & Analitikal",
+      "image": {
+        "src": "assets/images/ade/p2-dimensions.jpg",
+        "caption": "Fitur, Titik Data, dan Dimensi: Anatomi data tabular dan representasi baris-kolom."
+      },
       "body": [
         "Metadata vs Content Data: Metadata adalah 'data tentang data' yang mendeskripsikan atribut aset data (contoh: ukuran file, tanggal pembuatan, skema tabel, pemilik data, izin akses). Content data adalah substansi isi informasi itu sendiri (misalnya isi teks dokumen, angka transaksi, atau piksel citra).",
         "Klasifikasi data operasional organisasi: (1) Master Data — data entitas inti yang bersifat esensial dan konsisten lintas sistem operasional (contoh: data pelanggan, data produk, data mahasiswa, bagan akun); (2) Transactional Data — data yang tercipta dari aktivitas operasional transaksi harian (contoh: transaksi penjualan kasir, transfer perbankan, invoice); (3) Analytical Data — data historis dan ringkasan yang diturunkan dari data transaksional untuk keperluan laporan, evaluasi performa, dan pengambilan keputusan bisnis (BI dan data warehouse)."
@@ -41,6 +53,10 @@
       "id": "sumarisasi-deskriptif",
       "label": "Sumarisasi Numerik",
       "title": "4. Sumarisasi Statistik Deskriptif & Agregasi Data",
+      "image": {
+        "src": "assets/images/ade/p2-boxplot.jpg",
+        "caption": "Anatomi Box Plot: Menampilkan nilai minimum, Q1, Median (Q2), Q3, maksimum, dan pencilan (outliers)."
+      },
       "body": [
         "Sumarisasi data bertujuan memadatkan dataset besar dan kompleks ke dalam wujud ringkas yang menonjolkan karakteristik serta pola utama tanpa kehilangan esensi informasi.",
         "Ukuran Pemusatan (Central Tendency): Mean (rata-rata aritmatika), Median (nilai tengah pemisah 50% data atas dan bawah), dan Mode (nilai dengan kemunculan terbanyak). Bila data miring (skewed) atau memiliki outlier ekstrem, gunakan Median sebagai tolok ukur yang lebih stabil dibanding Mean.",
@@ -54,6 +70,10 @@
       "id": "metode-grafis-tabular",
       "label": "Grafis & Tabular",
       "title": "5. Metode Grafis dan Tabular dalam Sumarisasi",
+      "image": {
+        "src": "assets/images/ade/p2-choose-chart.jpg",
+        "caption": "Panduan Pemilihan Grafik: Menentukan visualisasi terbaik antara Bar Chart, Pie Chart, Histogram, atau Scatter Plot."
+      },
       "body": [
         "Metode Visualisasi Grafis: (1) Histogram — menyajikan distribusi frekuensi data numerik ke dalam kelompok bin berkelanjutan; (2) Box Plot (Box-and-Whisker) — merangkum nilai minimum, Q1, median, Q3, maksimum, dan titik-titik pencilan (outlier) untuk mendeteksi kemiringan distribusi; (3) Scatter Plot — menampilkan relasi dan pola korelasi antara dua variabel numerik; (4) Bar Chart — ideal untuk membandingkan frekuensi atau total per kategori diskrit; (5) Pie Chart — hanya cocok untuk menggambarkan proporsi bagian dari keseluruhan dengan sedikit kategori (≤ 5 kategori).",
         "Metode Ringkasan Tabular: (1) Frequency Tables — menyajikan daftar frekuensi kemunculan tiap kategori data secara langsung; (2) Pivot Tables — memungkinkan agregasi data multidimensi lintas kategori dan waktu (seperti merangkum total penjualan berdasarkan wilayah dan kategori produk secara simultan)."
