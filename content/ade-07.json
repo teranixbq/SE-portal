@@ -12,7 +12,11 @@
       "body": [
         "RDBMS: data sebagai relasi + constraint (PK, FK, UNIQUE, CHECK) + ACID (Atomicity, Consistency, Isolation, Durability). Komponen: parser/optimizer (rencana query), executor, storage engine (heap + B-tree index), buffer pool, WAL (write-ahead log), lock/concurrency manager (MVCC)."
       ],
-      "callout": "Bahan Bacaan: Elmasri & Navathe (2016) Ch.1-2, 17-19; Kleppmann (2017) Ch.7"
+      "callout": "Bahan Bacaan: Elmasri & Navathe (2016) Ch.1-2, 17-19; Kleppmann (2017) Ch.7",
+      "image": {
+        "src": "assets/images/ade/svg-m07-rdbms-anatomy.svg",
+        "caption": "Diagram Anatomi: Arsitektur Internal RDBMS PostgreSQL (Parser, Executor, MVCC, Storage Engine)."
+      }
     },
     {
       "id": "sec-2",

@@ -12,7 +12,11 @@
       "body": [
         "Batch (Spark, MapReduce): throughput tinggi, latency menit–jam — cocok untuk ETL harian, training ML. Stream (Kafka + Flink/Spark Streaming): latency detik — cocok untuk fraud detection, monitoring. Lambda (batch+speed layer) vs Kappa (semua sebagai stream). Exactly-once butuh idempotent sink."
       ],
-      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.8-11; Chambers & Zaharia (2018); Buyya et al. (2016)"
+      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.8-11; Chambers & Zaharia (2018); Buyya et al. (2016)",
+      "image": {
+        "src": "assets/images/ade/svg-m12-batch-vs-stream.svg",
+        "caption": "Diagram Komputasi: Pemrosesan Terdistribusi Batch (Spark) vs Streaming (Kafka/Flink)."
+      }
     },
     {
       "id": "sec-2",

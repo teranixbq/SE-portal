@@ -448,6 +448,98 @@ button, label { font: inherit; cursor: pointer; }
 .bbox-box.b1 { top: 15px; left: 20px; width: 100px; height: 75px; border-color: #2563eb; color: #2563eb; background: #2563eb12; }
 .bbox-box.b2 { top: 25px; right: 25px; width: 60px; height: 65px; border-color: var(--green); color: var(--green); background: #15803d12; }
 
+/* Agile & Scrum Widgets */
+.agile-values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin: 14px 0 6px; }
+.agile-val-card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 12px; display: flex; align-items: center; justify-content: space-between; }
+.agile-val-card .val-left { color: var(--green); font-weight: 800; font-size: 13px; }
+.agile-val-card .val-over { font-size: 11px; color: var(--muted); padding: 2px 6px; background: var(--bg); border-radius: 4px; }
+.agile-val-card .val-right { color: var(--muted); font-size: 12px; text-decoration: line-through; }
+.sprint-cycle-anim { display: flex; align-items: center; justify-content: space-between; gap: 8px; overflow-x: auto; padding: 12px 6px; }
+.sprint-step { flex: 1; min-width: 90px; text-align: center; padding: 10px 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; font-size: 12px; }
+.sprint-step span { font-size: 18px; display: block; margin-bottom: 2px; }
+
+/* Interactive Kanban Board */
+.kanban-board-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 6px; }
+.kanban-col { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+.kanban-col h5 { margin: 0 0 10px; font-size: 12px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+.kanban-card { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; margin-bottom: 8px; font-size: 12px; box-shadow: 0 1px 3px #0000000a; }
+.kanban-tag { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 3px; margin-bottom: 4px; }
+.tag-bug { background: #fee2e2; color: #b91c1c; }
+.tag-feat { background: #dbeafe; color: #1d4ed8; }
+.tag-task { background: var(--tint); color: var(--green); }
+
+/* DevOps Infinity & CALMS */
+.devops-infinity-wrap { display: flex; align-items: center; justify-content: space-around; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; margin: 14px 0 6px; }
+.devops-side { text-align: center; flex: 1; }
+.devops-side h6 { font-size: 14px; margin: 0 0 8px; }
+.dev-side h6 { color: #2563eb; }
+.ops-side h6 { color: var(--green); }
+.devops-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.devops-pills span { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); font-weight: 600; }
+.infinity-symbol { font-size: 38px; color: var(--green); font-weight: 900; animation: spin-slow 12s linear infinite; }
+@keyframes spin-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Containers vs VM Architecture */
+.containers-vs-vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 6px; }
+.arch-stack { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.arch-stack h6 { margin: 0 0 6px; font-size: 12px; font-weight: 800; text-align: center; }
+.arch-layer { padding: 8px; text-align: center; font-size: 11px; font-weight: 700; border-radius: 4px; border: 1px solid; }
+.layer-app { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+.layer-guest { background: #fef3c7; border-color: #fde68a; color: #92400e; }
+.layer-docker { background: #dcfce7; border-color: #86efac; color: #166534; }
+.layer-host { background: #f1f5f9; border-color: #cbd5e1; color: #334155; }
+
+/* Confusion Matrix Interactive */
+.confusion-matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 420px; margin: 14px auto 8px; }
+.cm-cell { padding: 14px; border-radius: 6px; text-align: center; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.cm-tp { background: #dcfce7; border-color: #86efac; color: #166534; }
+.cm-tn { background: #e0f2fe; border-color: #bae6fd; color: #075985; }
+.cm-fp { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.cm-fn { background: #fef3c7; border-color: #fde68a; color: #854d0e; }
+.cm-cell b { font-size: 13px; }
+.cm-cell small { font-size: 10px; opacity: .85; }
+
+/* API Serving Flow */
+.api-serving-anim { display: flex; align-items: center; justify-content: space-between; gap: 6px; overflow-x: auto; padding: 14px 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; margin: 14px 0 6px; }
+.api-node { flex: 1; min-width: 90px; text-align: center; padding: 8px 4px; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); font-size: 11px; font-weight: 700; }
+
+/* CRISP-DM Cycle */
+.crisp-cycle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 14px 0 6px; }
+.crisp-step { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 10px; text-align: center; font-size: 11px; font-weight: 700; }
+.crisp-step span { display: block; font-size: 10px; color: var(--green); font-weight: 800; margin-bottom: 2px; }
+
+/* MLOps 3-Ring Loop */
+.mlops-rings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 6px; }
+.ring-card { padding: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; text-align: center; }
+.ring-card h6 { margin: 0 0 4px; font-size: 12px; font-weight: 800; }
+.ring-card.r1 { border-top: 3px solid #2563eb; }
+.ring-card.r2 { border-top: 3px solid var(--green); }
+.ring-card.r3 { border-top: 3px solid #7c3aed; }
+.ring-card p { font-size: 11px; color: var(--muted); margin: 0; }
+
+/* CAP Triangle Interactive Widget */
+.cap-triangle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0 6px; }
+.cap-box { padding: 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); text-align: center; }
+.cap-box.cp { border-top: 3px solid #2563eb; }
+.cap-box.ap { border-top: 3px solid var(--green); }
+.cap-box.ca { border-top: 3px solid #d97706; }
+.cap-box h6 { margin: 0 0 4px; font-size: 12px; font-weight: 800; }
+.cap-box p { font-size: 11px; color: var(--muted); margin: 0; }
+
+/* Medallion Stack */
+.medallion-stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 6px; }
+.med-card { padding: 14px; border-radius: 6px; border: 1px solid var(--line); text-align: center; }
+.med-bronze { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+.med-silver { background: #f1f5f9; border-color: #cbd5e1; color: #334155; }
+.med-gold { background: #fefce8; border-color: #fef08a; color: #854d0e; }
+.med-card b { display: block; font-size: 13px; margin-bottom: 2px; }
+.med-card small { font-size: 11px; opacity: .85; }
+
+/* Security Shield Layers */
+.security-shield-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 14px 0 6px; }
+.sec-shield { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 10px; text-align: center; font-size: 11px; font-weight: 700; }
+.sec-shield span { font-size: 18px; display: block; margin-bottom: 2px; }
+
 /* Document Footer */
 .doc-footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--line); }
 .doc-cta-card { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding: 22px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 24px; }

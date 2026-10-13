@@ -12,7 +12,11 @@
       "body": [
         "Min-max scaling ke [0,1]; z-score standardization (mean 0, sd 1 — wajib untuk SVM, k-NN, PCA, neural net); robust scaling (median/IQR — tahan outlier); log/power transform untuk skew; one-hot vs ordinal/label encoding untuk kategorikal."
       ],
-      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3; Leskovec et al. (2020) Ch.11-12"
+      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3; Leskovec et al. (2020) Ch.11-12",
+      "image": {
+        "src": "assets/images/ade/svg-m06-anti-leakage.svg",
+        "caption": "Diagram Alur: Pola Anti-Leakage (Fit Scaler/PCA Hanya pada Train Set)."
+      }
     },
     {
       "id": "sec-2",

@@ -12,7 +12,11 @@
       "body": [
         "Document (MongoDB: JSON fleksibel, katalog produk). Key-Value (Redis: session/cache, TTL). Column-family (Cassandra/HBase: tulis masif time-series, partisi). Graph (Neo4j: relasi kompleks — fraud, rekomendasi, knowledge graph)."
       ],
-      "callout": "Bahan Bacaan: Sadalage & Fowler (2012); Kleppmann (2017) Ch.2"
+      "callout": "Bahan Bacaan: Sadalage & Fowler (2012); Kleppmann (2017) Ch.2",
+      "image": {
+        "src": "assets/images/ade/svg-m10-nosql-cap.svg",
+        "caption": "Diagram Klasifikasi: 4 Tipe Basis Data NoSQL dan Segitiga Teorema CAP/PACELC."
+      }
     },
     {
       "id": "sec-2",

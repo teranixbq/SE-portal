@@ -12,7 +12,11 @@
       "body": [
         "11 area: Data Governance, Architecture, Modeling, Storage, Security, Integration, Documents, Reference/Master Data, Warehousing/BI, Metadata, Quality. Governance adalah payung: kebijakan, peran (Data Owner, Steward, Custodian), dan audit."
       ],
-      "callout": "Bahan Bacaan: DAMA-DMBOK (2017) Ch.1-3; Engelhardt et al. FAIR Handbook (2022); Eryurek et al. (2021)"
+      "callout": "Bahan Bacaan: DAMA-DMBOK (2017) Ch.1-3; Engelhardt et al. FAIR Handbook (2022); Eryurek et al. (2021)",
+      "image": {
+        "src": "assets/images/ade/svg-m04-governance.svg",
+        "caption": "Diagram Arsitektur: Tata Kelola Data DAMA & Siklus FAIR."
+      }
     },
     {
       "id": "sec-2",

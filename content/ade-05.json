@@ -12,7 +12,11 @@
       "body": [
         "Missing (MCAR/MAR/MNAR), outlier vs anomaly (outlier = titik ekstrem; anomaly = pola menyimpang kontekstual), noise (kesalahan acak pengukuran), duplikat (exact & fuzzy), inkonsistensi format/satuan, data drift (distribusi berubah seiring waktu)."
       ],
-      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3 Data Preprocessing"
+      "callout": "Bahan Bacaan: Han et al. (2022) Ch.3 Data Preprocessing",
+      "image": {
+        "src": "assets/images/ade/svg-m05-data-issues.svg",
+        "caption": "Diagram Taksonomi: Masalah Data, Metode Deteksi, dan Teknik Penanganan."
+      }
     },
     {
       "id": "sec-2",

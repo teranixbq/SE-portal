@@ -12,7 +12,11 @@
       "body": [
         "Warehouse: terstruktur, skema-on-write, optimal untuk BI/SQL (Snowflake, BigQuery). Lake: mentah multi-format, skema-on-read, murah (S3 + Parquet/Iceberg). Lakehouse: gabungan — lake murah + transaksi/ACID + SQL performan (Delta Lake, Iceberg, Hudi). Mart: subset warehouse per departemen."
       ],
-      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1; Dehghani (2022); Reis & Housley (2022) Ch.5"
+      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1; Dehghani (2022); Reis & Housley (2022) Ch.5",
+      "image": {
+        "src": "assets/images/ade/svg-m11-lakehouse.svg",
+        "caption": "Diagram Komparasi: Data Warehouse vs Data Lake vs Modern Lakehouse."
+      }
     },
     {
       "id": "sec-2",

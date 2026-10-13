@@ -12,7 +12,11 @@
       "body": [
         "ETL: Transform sebelum Load (cocok untuk warehouse klasik + aturan ketat). ELT: Load mentah dulu ke lake/warehouse lalu Transform di dalam (cocok untuk big data + fleksibilitas, mis. dbt di BigQuery/Snowflake). Pola medallion: Bronze (mentah) → Silver (bersih) → Gold (agregat bisnis)."
       ],
-      "callout": "Bahan Bacaan: Reis & Housley (2022) Ch.8-10; Doan et al. (2012) Ch.5-6"
+      "callout": "Bahan Bacaan: Reis & Housley (2022) Ch.8-10; Doan et al. (2012) Ch.5-6",
+      "image": {
+        "src": "assets/images/ade/svg-m09-etl-vs-elt.svg",
+        "caption": "Diagram Komparasi: Alur Pipeline ETL vs ELT, Quality Gates, dan Pola Medallion."
+      }
     },
     {
       "id": "sec-2",

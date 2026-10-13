@@ -12,7 +12,11 @@
       "body": [
         "Enkripsi: at-rest (AES-256) + in-transit (TLS 1.2+). Hash password dengan bcrypt/Argon2 (jangan MD5/SHA1 polos). Kontrol akses: RBAC + least privilege; masking/tokenisasi PII; audit log. Regulasi: UU PDP No. 27/2022 (Indonesia) — consent, hak hapus, breach notification; padanan: GDPR."
       ],
-      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.10; Eryurek et al. (2021); UU PDP No.27/2022"
+      "callout": "Bahan Bacaan: Kleppmann (2017) Ch.10; Eryurek et al. (2021); UU PDP No.27/2022",
+      "image": {
+        "src": "assets/images/ade/svg-m13-security-layers.svg",
+        "caption": "Diagram Keamanan: Lapisan Pertahanan Berlapis (Defense in Depth) & Kualitas Data."
+      }
     },
     {
       "id": "sec-2",

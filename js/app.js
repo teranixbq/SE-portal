@@ -63,7 +63,180 @@ async function home() {
   $('#recent-list').innerHTML = recent.slice(0, 3).map(x => `<a class="recent-item" href="session.html?course=${x.course}&session=${x.id}"><b>${x.title}</b><small>${x.courseName} · ${timeAgo(x.time)} →</small></a>`).join('');
 }
 
-function diagram(id) {
+function diagram(id, sesId = '') {
+  // ADE Module Specific Interactive Widgets
+  if (sesId === 'ade-04' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Kerangka Tata Kelola DAMA & Siklus Hidup FAIR</div>
+    <div class="scale-visual-grid">
+      <div class="scale-card"><b>Findable (F)</b><p>Metadata kaya, pengenal unik persisten (DOI/PID)</p></div>
+      <div class="scale-card"><b>Accessible (A)</b><p>Protokol terbuka & autentikasi terstandarisasi</p></div>
+      <div class="scale-card"><b>Interoperable (I)</b><p>Format terbuka, kosakata terstruktur</p></div>
+      <div class="scale-card"><b>Reusable (R)</b><p>Lisensi jelas, silsilah data (data lineage) lengkap</p></div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-05' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Simulasi Pagar Outlier Tukey (IQR Fence)</div>
+    <div class="boxplot-graphic">
+      <div class="bp-track">
+        <div class="bp-whisker left"><span>Pagar Bawah: Q1 - 1.5·IQR</span></div>
+        <div class="bp-box">
+          <div class="bp-part q1"><b>Q1 (25%)</b><small>Kuartil Pertama</small></div>
+          <div class="bp-median"><b>Median</b><small>Q2 (50%)</small></div>
+          <div class="bp-part q3"><b>Q3 (75%)</b><small>Kuartil Ketiga</small></div>
+        </div>
+        <div class="bp-whisker right"><span>Pagar Atas: Q3 + 1.5·IQR</span></div>
+        <div class="bp-outlier"><i></i><span>Pencilan Terdeteksi!</span></div>
+      </div>
+      <div class="bp-iqr-label">Pencilan dievaluasi (Winsorize / Investigasi / Transformasi Log) — Hindari penghapusan membabi-buta!</div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-06' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Pola Anti-Leakage: Partisi Train & Test</div>
+    <div class="format-compare-grid">
+      <div class="format-col rec">
+        <div class="fmt-head">✓ Training Dataset (Fit + Transform)</div>
+        <ul>
+          <li>Fit Scaler (Min-Max / Standard / Robust)</li>
+          <li>Fit Reduksi Dimensi (PCA 95% Variance)</li>
+          <li>Fit Imputer Nilai Hilang</li>
+        </ul>
+      </div>
+      <div class="format-col not-rec">
+        <div class="fmt-head">⛔ Test Dataset (HANYA Transform)</div>
+        <ul>
+          <li>TIDAK BOLEH memanggil method .fit()</li>
+          <li>Hanya menerapkan parameter dari train set</li>
+          <li>Mencegah kebocoran data evaluasi!</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-07' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Alur Eksekusi Query Internal RDBMS PostgreSQL</div>
+    <div class="pipeline-animated-flow">
+      <div class="pipe-step"><span class="pipe-icon">📝</span><b>SQL Parser</b><small>Syntax & Lexical</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">🧠</span><b>Optimizer</b><small>Query Plan (Cost)</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">⚙️</span><b>Executor</b><small>MVCC & Lock Manager</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">📑</span><b>WAL Engine</b><small>Write-Ahead Log</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="pipe-step"><span class="pipe-icon">💽</span><b>Buffer Pool</b><small>Heap Pages & B-Tree</small></div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-08' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Topologi Star Schema: Tabel Fakta & Dimensi</div>
+    <div class="kanban-board-demo">
+      <div class="kanban-col">
+        <h5>DIMENSI WAKTU & TOKO</h5>
+        <div class="kanban-card"><b>dim_date</b><br><small>date_key, day, month, year</small></div>
+        <div class="kanban-card"><b>dim_store</b><br><small>store_key, region, city</small></div>
+      </div>
+      <div class="kanban-col" style="background:var(--tint);border-color:var(--green)">
+        <h5 style="color:var(--green)">TABEL FAKTA (PUSAT)</h5>
+        <div class="kanban-card" style="border-left:3px solid var(--green)">
+          <b>fact_sales</b><br>
+          <small>• order_id (Grain)<br>• date_key (FK)<br>• product_key (FK)<br>• customer_key (FK)<br>• qty (Measure)<br>• revenue (Measure)</small>
+        </div>
+      </div>
+      <div class="kanban-col">
+        <h5>DIMENSI PRODUK & USER</h5>
+        <div class="kanban-card"><b>dim_product</b><br><small>product_key, sku, category</small></div>
+        <div class="kanban-card"><b>dim_customer</b><br><small>customer_key, SCD Tipe 2</small></div>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-09' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Pola Medallion Lakehouse & Quality Gates</div>
+    <div class="medallion-stack-grid">
+      <div class="med-card med-bronze">
+        <b>🥉 BRONZE LAYER</b>
+        <small>Data mentah apa adanya dari API, CDC, file batch. Schema-on-read, immutable append-only.</small>
+      </div>
+      <div class="med-card med-silver">
+        <b>🥈 SILVER LAYER</b>
+        <small>Data bersih, deduplikasi, format terstandarisasi, lolos quality gates & schema contract.</small>
+      </div>
+      <div class="med-card med-gold">
+        <b>🥇 GOLD LAYER</b>
+        <small>Tabel agregat bisnis, model dimensional star schema, siap konsumsi BI dashboard & ML.</small>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-10' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Teorema CAP & PACELC pada Basis Data Terdistribusi</div>
+    <div class="cap-triangle-grid">
+      <div class="cap-box cp">
+        <h6>CP (Consistency + Partition)</h6>
+        <p>Konsistensi data ketat walau partisi terjadi. Contoh: MongoDB, HBase, Redis Cluster.</p>
+      </div>
+      <div class="cap-box ap">
+        <h6>AP (Availability + Partition)</h6>
+        <p>Sistem tetap merespons walau data belum sinkron (eventual consistency). Contoh: Cassandra, DynamoDB, CouchDB.</p>
+      </div>
+      <div class="cap-box ca">
+        <h6>CA (Tradisional RDBMS)</h6>
+        <p>Konsisten dan tersedia di single-node, tidak tahan kegagalan partisi jaringan. Contoh: PostgreSQL, MySQL.</p>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-11' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Evolusi: Data Warehouse vs Data Lake vs Lakehouse</div>
+    <div class="agile-values-grid">
+      <div class="agile-val-card">
+        <div><b>Data Warehouse</b><br><small>Skema kaku saat tulis, terstruktur, optimal SQL analitik</small></div>
+      </div>
+      <div class="agile-val-card">
+        <div><b>Data Lake</b><br><small>Biaya penyimpanan murah, multi-format, risiko 'data swamp'</small></div>
+      </div>
+      <div class="agile-val-card" style="border-color:var(--green);background:var(--tint)">
+        <div><b style="color:var(--green)">Modern Lakehouse</b><br><small>Object store murah + ACID transactional layer (Iceberg, Delta Lake) + performa BI cepat</small></div>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-12' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Batch Processing vs Event Streaming</div>
+    <div class="format-compare-grid">
+      <div class="format-col rec">
+        <div class="fmt-head">⚡ Real-Time Streaming (Kafka + Flink)</div>
+        <ul>
+          <li>Latensi: Milidetik hingga detik</li>
+          <li>Kasus: Deteksi fraud seketika, telemetri IoT, alert</li>
+          <li>Komputasi: Event-by-event windowing</li>
+        </ul>
+      </div>
+      <div class="format-col not-rec" style="border-top-color:#0284c7">
+        <div class="fmt-head" style="color:#0284c7">📦 Batch Processing (Apache Spark)</div>
+        <ul>
+          <li>Latensi: Menit hingga jam</li>
+          <li>Kasus: ETL periodik, pelatihan model ML, laporan bulanan</li>
+          <li>Komputasi: Partisi masif In-Memory</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+
+  if (sesId === 'ade-13' && id === 'sec-1') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Arsitektur Keamanan Data Berlapis (Defense in Depth)</div>
+    <div class="security-shield-grid">
+      <div class="sec-shield"><span>🔐</span><b>At-Rest</b><small>AES-256 KMS</small></div>
+      <div class="sec-shield"><span>🌐</span><b>In-Transit</b><small>TLS 1.2+ HTTPS</small></div>
+      <div class="sec-shield"><span>🛡</span><b>Akses</b><small>RBAC Least Privilege</small></div>
+      <div class="sec-shield"><span>🎭</span><b>Privasi</b><small>Masking PII & Tokenisasi</small></div>
+      <div class="sec-shield"><span>⚖️</span><b>Kepatuhan</b><small>UU PDP & GDPR</small></div>
+    </div>
+  </div>`;
+
+  // Existing SE4DS & general widgets
   if (id === 'validasi') return `<div class="diagram"><div class="diagram-title">Foto 1 · hold-out vs 10-fold cross-validation</div><div class="visual-note"><img src="assets/images/cross-validation.jpeg" alt="Catatan dosen tentang cross-validation"><p>Catatan asli: 1.000 baris dibagi untuk training, testing, lalu validasi bergilir.</p></div><div class="split-animation"><div class="split-label">1.000 rows</div><div class="split-bar"><i class="train-part">80% training</i><i class="test-part">20% testing</i></div><div class="split-caption">hold-out split · satu pembagian untuk menguji generalisasi</div></div><div class="diagram-title fold-title">lalu validasi bergilir</div><div class="folds">${Array.from({length:10}, (_, i) => `<i style="animation-delay:${i * 80}ms"></i>`).join('')}</div><div class="fold-note"><span>90% training</span><span>10% validation berpindah setiap putaran</span></div><div class="flow" style="margin-top:20px"><span>10 putaran</span><b>→</b><span>10 skor validasi</span><b>→</b><span>rata-rata</span></div></div>`;
   if (id === 'pipeline') return `<div class="diagram"><div class="diagram-title">Foto 2 · model masuk ke aplikasi</div><div class="visual-note"><img src="assets/images/ml-pipeline.jpeg" alt="Catatan dosen tentang machine learning pipeline"><p>Catatan asli: model dievaluasi, disimpan, lalu dihubungkan ke aplikasi.</p></div><div class="pipeline-animation"><span class="pipeline-node">Dataset</span><b>→</b><span class="pipeline-node">Train</span><b>→</b><span class="pipeline-node">Model</span><b>→</b><span class="pipeline-node">Evaluate</span><b>→</b><span class="pipeline-node">Application</span></div><div class="inference-line"><i></i><span>unseen data masuk</span><b>→</b><strong>prediksi</strong></div></div>`;
   if (id === 'sdlc') return `<div class="diagram"><div class="diagram-title">siklus pengembangan</div><div class="flow"><span>Plan</span><b>→</b><span>Analyze</span><b>→</b><span>Design</span><b>→</b><span>Build</span><b>→</b><span>Test</span><b>→</b><span>Maintain</span></div></div>`;
@@ -226,6 +399,165 @@ function diagram(id) {
           <div class="bbox-box b2"><span>Pedestrian: 0.88</span></div>
         </div>
       </div>
+    </div>
+  </div>`;
+
+  // Additional SE4DS Widgets
+  if (id === 'manifesto') return `<div class="diagram animated-widget">
+    <div class="diagram-title">4 Nilai Inti Agile Manifesto</div>
+    <div class="agile-values-grid">
+      <div class="agile-val-card"><span class="val-left">Individu & Interaksi</span><span class="val-over">melampaui</span><span class="val-right">Proses & Tools</span></div>
+      <div class="agile-val-card"><span class="val-left">Software yang Berfungsi</span><span class="val-over">melampaui</span><span class="val-right">Dokumentasi Komprehensif</span></div>
+      <div class="agile-val-card"><span class="val-left">Kolaborasi dengan Klien</span><span class="val-over">melampaui</span><span class="val-right">Negosiasi Kontrak</span></div>
+      <div class="agile-val-card"><span class="val-left">Tanggap terhadap Perubahan</span><span class="val-over">melampaui</span><span class="val-right">Mengikuti Suatu Rencana</span></div>
+    </div>
+  </div>`;
+
+  if (id === 'praktik') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Alur Siklus Sprint Scrum</div>
+    <div class="sprint-cycle-anim">
+      <div class="sprint-step"><span>📋</span><b>Product Backlog</b><small>Daftar prioritas</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="sprint-step"><span>🎯</span><b>Sprint Planning</b><small>Target 2-4 minggu</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="sprint-step"><span>⏱</span><b>Daily Scrum</b><small>Standup 15 menit</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="sprint-step"><span>📦</span><b>Increment</b><small>Working software</small></div>
+      <i class="pipe-arrow">➜</i>
+      <div class="sprint-step"><span>🔍</span><b>Sprint Review</b><small>Demo & feedback</small></div>
+    </div>
+  </div>`;
+
+  if (id === 'delivery') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Simulasi Papan Kanban Interaktif</div>
+    <div class="kanban-board-demo">
+      <div class="kanban-col">
+        <h5>TO DO <span>(2)</span></h5>
+        <div class="kanban-card"><span class="kanban-tag tag-feat">Feature</span><br>Setup pipeline data ingest</div>
+        <div class="kanban-card"><span class="kanban-tag tag-task">Task</span><br>Riset arsitektur model</div>
+      </div>
+      <div class="kanban-col">
+        <h5>IN PROGRESS <span>(1)</span></h5>
+        <div class="kanban-card"><span class="kanban-tag tag-feat">Feature</span><br>Train baseline model v1</div>
+      </div>
+      <div class="kanban-col">
+        <h5>DONE <span>(2)</span></h5>
+        <div class="kanban-card"><span class="kanban-tag tag-task">Task</span><br>Setup repositori Git & CI</div>
+        <div class="kanban-card"><span class="kanban-tag tag-bug">Bugfix</span><br>Perbaiki missing values CSV</div>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'cicd' || id === 'culture') return `<div class="diagram animated-widget">
+    <div class="diagram-title">DevOps Infinity Loop · Continuous Everything</div>
+    <div class="devops-infinity-wrap">
+      <div class="devops-side dev-side">
+        <h6>DEVELOPMENT</h6>
+        <div class="devops-pills"><span>Plan</span><span>Code</span><span>Build</span><span>Test</span></div>
+      </div>
+      <div class="infinity-symbol">∞</div>
+      <div class="devops-side ops-side">
+        <h6>OPERATIONS</h6>
+        <div class="devops-pills"><span>Release</span><span>Deploy</span><span>Operate</span><span>Monitor</span></div>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'tools') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Perbandingan Arsitektur: Virtual Machine vs Container</div>
+    <div class="containers-vs-vm-grid">
+      <div class="arch-stack">
+        <h6>Virtual Machine (Hypervisor)</h6>
+        <div class="arch-layer layer-app">App + Bins (GBs)</div>
+        <div class="arch-layer layer-guest">Guest OS Kernel</div>
+        <div class="arch-layer layer-host">Hypervisor</div>
+        <div class="arch-layer layer-host">Host OS & Hardware</div>
+      </div>
+      <div class="arch-stack">
+        <h6>Docker Container (Shared Kernel)</h6>
+        <div class="arch-layer layer-app">App + Bins (MBs)</div>
+        <div class="arch-layer layer-docker">Docker Daemon Engine</div>
+        <div class="arch-layer layer-host">Host OS Kernel (Shared)</div>
+        <div class="arch-layer layer-host">Hardware</div>
+      </div>
+    </div>
+  </div>`;
+
+  if (id === 'tradeoff') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Matriks Konfusi (Confusion Matrix) & Metrik Evaluasi</div>
+    <div class="confusion-matrix-grid">
+      <div class="cm-cell cm-tp"><b>True Positive (TP)</b><small>Aktual 1, Prediksi 1</small></div>
+      <div class="cm-cell cm-fp"><b>False Positive (FP)</b><small>Aktual 0, Prediksi 1 (Tipe I)</small></div>
+      <div class="cm-cell cm-fn"><b>False Negative (FN)</b><small>Aktual 1, Prediksi 0 (Tipe II)</small></div>
+      <div class="cm-cell cm-tn"><b>True Negative (TN)</b><small>Aktual 0, Prediksi 0</small></div>
+    </div>
+    <div class="flow" style="margin-top:14px;justify-content:center">
+      <span>Akurasi = (TP+TN) / Total</span>
+      <span>Precision = TP / (TP+FP)</span>
+      <span>Recall = TP / (TP+FN)</span>
+    </div>
+  </div>`;
+
+  if (id === 'production') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Alur Inference Model via REST API Gateway</div>
+    <div class="api-serving-anim">
+      <div class="api-node">Client App (Web/Mobile)</div>
+      <i class="pipe-arrow">➜ JSON Request</i>
+      <div class="api-node">API Gateway & Auth</div>
+      <i class="pipe-arrow">➜ Sanitized Input</i>
+      <div class="api-node">ML Model Server</div>
+      <i class="pipe-arrow">➜ Prediction Response</i>
+      <div class="api-node">Audit & Logging</div>
+    </div>
+  </div>`;
+
+  if (id === 'process') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Siklus Metodologi CRISP-DM untuk Data Science</div>
+    <div class="crisp-cycle-grid">
+      <div class="crisp-step"><span>Fase 1</span>Business Understanding</div>
+      <div class="crisp-step"><span>Fase 2</span>Data Understanding</div>
+      <div class="crisp-step"><span>Fase 3</span>Data Preparation</div>
+      <div class="crisp-step"><span>Fase 4</span>Modeling</div>
+      <div class="crisp-step"><span>Fase 5</span>Evaluation</div>
+      <div class="crisp-step"><span>Fase 6</span>Deployment</div>
+    </div>
+  </div>`;
+
+  if (id === 'cycle' || id === 'monitor') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Trinitas MLOps: Penyatuan Tiga Siklus</div>
+    <div class="mlops-rings-grid">
+      <div class="ring-card r1"><h6>DATA PIPELINE</h6><p>Ingest, validasi skema, feature store, versioning DVC</p></div>
+      <div class="ring-card r2"><h6>MODEL PIPELINE</h6><p>Training, tuning, tracking MLflow, model registry</p></div>
+      <div class="ring-card r3"><h6>SOFTWARE PIPELINE</h6><p>CI/CD, container registry, live endpoint monitoring</p></div>
+    </div>
+  </div>`;
+
+  if (id === 'secure' || id === 'privacy') return `<div class="diagram animated-widget">
+    <div class="diagram-title">3 Zona Keamanan & Audit Trail MLOps</div>
+    <div class="security-shield-grid">
+      <div class="sec-shield"><span>🛡</span><b>Zona Data</b><small>Enkripsi at-rest, akses terbatas data mentah</small></div>
+      <div class="sec-shield"><span>🔒</span><b>Zona Model</b><small>Integritas bobot model, signing artefak</small></div>
+      <div class="sec-shield"><span>🌐</span><b>Zona Serving</b><small>Rate limiting, WAF, sanitasi input API</small></div>
+      <div class="sec-shield"><span>📝</span><b>Audit Trail</b><small>Log timestamp, identitas penyeru, hash prediksi</small></div>
+    </div>
+  </div>`;
+
+  if (id === 'team' || id === 'project') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Matriks Kolaborasi Tim Multidisiplin</div>
+    <div class="roles-matrix">
+      <div class="role-box de"><span class="role-badge">Software Engineer</span><p class="role-focus">SDLC, API Architecture, CI/CD, Testing</p></div>
+      <div class="role-box ds"><span class="role-badge">Data Scientist</span><p class="role-focus">EDA, Formula Matematika, Model Training, Evaluasi</p></div>
+      <div class="role-box mle"><span class="role-badge">Data Engineer</span><p class="role-focus">Pipeline Ingestion, Storage, Data Quality, Lineage</p></div>
+    </div>
+  </div>`;
+
+  if (id === 'evaluate' || id === 'reflect') return `<div class="diagram animated-widget">
+    <div class="diagram-title">Dimensi Evaluasi Proyek Terpadu & Refleksi</div>
+    <div class="scale-visual-grid">
+      <div class="scale-card"><b>1. Fungsionalitas</b><p>Kesesuaian fitur terhadap user story & acceptance criteria</p></div>
+      <div class="scale-card"><b>2. Kinerja & Latensi</b><p>Metrik model (Accuracy/F1) dan latensi respon sistem (p95)</p></div>
+      <div class="scale-card"><b>3. Keamanan & Governance</b><p>Kepatuhan privasi data, audit log, dan proteksi kredensial</p></div>
+      <div class="scale-card"><b>4. Skalabilitas</b><p>Arsitektur modular siap produksi dan kemudahan pemeliharaan</p></div>
     </div>
   </div>`;
 
@@ -552,7 +884,7 @@ async function sessionPage() {
                   <figcaption><span class="media-icon">🖼</span> ${sec.image.caption || ''}</figcaption>
                 </figure>
               ` : ''}
-              ${diagram(sec.id)}
+              ${diagram(sec.id, content.sessionId)}
             </section>
           `).join('')}
         </div>

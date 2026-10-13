@@ -13,7 +13,11 @@
         "Data-driven software development adalah praktik memanfaatkan analisis data dan metrik terukur untuk memandu perancangan, pengembangan, dan evolusi perangkat lunak.",
         "Pendekatan ini menekankan pentingnya penggunaan data dunia nyata untuk menginformasikan keputusan arsitektural, mengoptimalkan kinerja sistem, dan meningkatkan pengalaman pengguna secara berkelanjutan."
       ],
-      "callout": "Keputusan rekayasa yang dipandu oleh metrik dan data empiris selalu mengungguli asumsi spekulatif."
+      "callout": "Keputusan rekayasa yang dipandu oleh metrik dan data empiris selalu mengungguli asumsi spekulatif.",
+      "image": {
+        "src": "assets/images/se4ds/p01-datadriven-intro.jpg",
+        "caption": "Data-Driven Software Development: Memadukan metrik data dengan siklus hidup perangkat lunak."
+      }
     },
     {
       "id": "paradigma",

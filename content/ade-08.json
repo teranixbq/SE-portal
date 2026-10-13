@@ -12,7 +12,11 @@
       "body": [
         "1NF: atomik, tanpa repeating group. 2NF: non-key bergantung penuh pada seluruh PK (hilangkan partial dependency). 3NF: tanpa transitive dependency. BCNF: setiap determinan adalah superkey. Denormalisasi terkontrol boleh untuk baca-berat — dengan alasan tertulis."
       ],
-      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1-4; Elmasri & Navathe (2016) Ch.14-15"
+      "callout": "Bahan Bacaan: Kimball & Ross (2013) Ch.1-4; Elmasri & Navathe (2016) Ch.14-15",
+      "image": {
+        "src": "assets/images/ade/svg-m08-star-schema.svg",
+        "caption": "Diagram Skema: Star Schema dengan Tabel Fakta Pusat dan Dimensi SCD Tipe 2."
+      }
     },
     {
       "id": "sec-2",
